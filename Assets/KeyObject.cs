@@ -17,9 +17,9 @@ public class KeyObject : MonoBehaviour {
 		KEY_NULL_MAX=8,
 	}
 
-	int key_req=(int)KEY_REQUIREMENT.KEY_NULL_MAX;
+	public int key_req=(int)KEY_REQUIREMENT.KEY_NULL_MAX;
 
-	bool complete;
+	bool complete=false;
 
 
 	// Use this for initialization
@@ -38,7 +38,7 @@ public class KeyObject : MonoBehaviour {
 
 	}
 
-	void OnCollisionEnter(Collision col)
+	void OnTriggerEnter2D(Collider2D col) 
 	{
 		if (col.gameObject.GetComponent<Player>()) {
 			Player p=col.gameObject.GetComponent<Player>();
@@ -46,7 +46,7 @@ public class KeyObject : MonoBehaviour {
 		}
 	}
 
-	void OnCollisionExit(Collision col)
+	void OnCTriggerExit2D(Collider2D col)
 	{
 		if (!complete) {
 			Player p=col.gameObject.GetComponent<Player>();	
@@ -56,7 +56,10 @@ public class KeyObject : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
+		if (complete) {
+				
+			DestroyObject(this.gameObject);
+		}
 
 	}
 }
