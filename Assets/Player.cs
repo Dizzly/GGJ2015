@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 		// Use this for initialization
 
 
-		int extaLives_ = 0;//no extra lives by default
+		int extraLives_ = 0;//no extra lives by default
 
 		bool modifierKeyPressed_;//the modifier key to switch between colour and shape
 
@@ -24,7 +24,9 @@ public class Player : MonoBehaviour
 
 		public void LooseGame ()
 		{
-		print ("Dead");
+		if (extraLives_==0) {
+						print ("Dead");
+				}
 		}
 
 		void IncrementRead ()
