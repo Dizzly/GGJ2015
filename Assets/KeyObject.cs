@@ -20,7 +20,21 @@ public class KeyObject : MonoBehaviour {
 	public int key_req=(int)KEY_REQUIREMENT.KEY_NULL_MAX;
 
 	bool complete=false;
+	bool added=false;
 
+	int scoreValue;
+	ScoreManager scoreMan;
+
+	public Color[] keyColors = new Color[8]{
+		Color.red,
+		Color.blue,
+		Color.yellow,
+		Color.green,
+		Color.red,
+		Color.blue,
+		Color.yellow,
+		Color.green,
+	};
 
 	// Use this for initialization
 	void Start () {
@@ -35,24 +49,45 @@ public class KeyObject : MonoBehaviour {
 	public void IsComplete(bool b)
 	{
 		complete = b;
+		if (scoreMan) {
+						scoreMan.AwardScore (scoreValue);
+				}
 
+	}
+
+	public void InitScore(int score, ScoreManager s)
+	{
+		scoreValue = score;
+		scoreMan = s;
+	}
+
+	public void SetKey(int key)
+	{
+		key_req = key;
+		gameObject.renderer.material.color = keyColors [key];
+		GetComponentInChildren<LightPulser> ().l.color = keyColors [key];
 	}
 
 	void OnTriggerEnter2D(Collider2D col) 
 	{
-		if (col.gameObject.GetComponent<Player>()) {
 			Player p=col.gameObject.GetComponent<Player>();
-			p.AddKeyObject(this);
-		}
+		if (p&&!added) {
+					p.AddKeyObject (this);
+			added=true;
+				}
+
 	}
 
-	void OnCTriggerExit2D(Collider2D col)
+	void OnTriggerExit2D(Collider2D col)
 	{
 		if (!complete) {
 			Player p=col.gameObject.GetComponent<Player>();	
-			p.LooseGame();
+			if(p)
+			{
+				p.LooseGame();
+			}
 		}
-	}
+	} 
 
 	// Update is called once per frame
 	void Update () {
