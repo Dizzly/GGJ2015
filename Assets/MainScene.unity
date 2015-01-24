@@ -671,6 +671,7 @@ MonoBehaviour:
   spawnPos:
   - {fileID: 1358921996}
   - {fileID: 781330940}
+  minimumSpacing: 3
   minXSpawn: 0
   maxXSpawn: 8
   spawnFrequency: 0

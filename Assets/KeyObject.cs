@@ -103,14 +103,24 @@ public class KeyObject : MonoBehaviour {
 		}
 	}
 
+	private void UpdateTransformList(){
+		//Acquiring spawner via Tag
+		GameObject spawnerObj = GameObject.FindWithTag("Spawner");
+		Spawner spawner = (Spawner)spawnerObj.GetComponent(typeof(Spawner));
+		spawner.DeleteDestroyingObject(transform);
+	}
+
 	// Update is called once per frame
 	void Update () {
 		if (complete) {
-				
+
+			UpdateTransformList();
 			DestroyObject(this.gameObject);
 		}
 
 		if (transform.position.y < -8) {
+
+			UpdateTransformList();
 			DestroyObject(this.gameObject);
 		}
 
