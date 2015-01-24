@@ -6,12 +6,13 @@ public class TextFollow : MonoBehaviour {
 
 	 GameObject text;
 
-	string[] keyStrings= new string[4]
+	string[] keyStrings= new string[5]
 	{
 		"B",
 		"X",
 		"Y",
-		"A"
+		"A",
+		""
 	};
 
 	// Use this for initialization

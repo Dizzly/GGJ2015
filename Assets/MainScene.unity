@@ -115,10 +115,10 @@ MonoBehaviour:
   m_Script: {fileID: 1077351063, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
+  m_HorizontalAxis: Dud
+  m_VerticalAxis: Dud
+  m_SubmitButton: Dud
+  m_CancelButton: Dud
   m_InputActionsPerSecond: 10
   m_AllowActivationOnMobileDevice: 0
 --- !u!114 &179948965
@@ -673,6 +673,8 @@ MonoBehaviour:
   - {fileID: 781330940}
   minXSpawn: 0
   maxXSpawn: 8
+  spawnFrequency: 0
+  baseSpawnChance: 0
 --- !u!4 &781330940
 Transform:
   m_ObjectHideFlags: 0
@@ -912,7 +914,7 @@ Transform:
   m_PrefabInternal: {fileID: 2029100340}
   m_GameObject: {fileID: 1004707525}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: .400000006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 393774760}
@@ -1664,6 +1666,10 @@ Prefab:
     - target: {fileID: 10800000, guid: ec5a1178a1d3a85449cabac8b54d681f, type: 2}
       propertyPath: m_Range
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: ec5a1178a1d3a85449cabac8b54d681f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: .400000006
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ec5a1178a1d3a85449cabac8b54d681f, type: 2}

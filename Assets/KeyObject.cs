@@ -11,7 +11,7 @@ public class KeyObject : MonoBehaviour {
 		KEY_2=1,
 		KEY_3=2,
 		KEY_4=3,
-		KEY_NULL_MAX=8,
+		KEY_NULL_MAX=4,
 	}
 
 	public int key_req=(int)KEY_REQUIREMENT.KEY_NULL_MAX;

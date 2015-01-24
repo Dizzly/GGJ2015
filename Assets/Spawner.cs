@@ -14,13 +14,21 @@ public class Spawner : MonoBehaviour {
 	public float minXSpawn;
 	public float maxXSpawn;
 
-	float currentSpeed_;
-	int currentScore_;
+	public float currentSpeed_=2.0f;
+	public int currentScore_=100;
 	// Use this for initialization
 	void Start () {
-		currentSpeed_ = 2.0f;
-		currentScore_ = 100;
+		spawnChance = baseSpawnChance;
 	}
+
+	public float spawnFrequency;
+	private float spawnTimer;
+
+	public int baseSpawnChance;
+	public int spawnChanceIncrment;
+	int spawnChance;
+
+
 
 	void SpawnKeyObj()
 	{
@@ -51,7 +59,7 @@ public class Spawner : MonoBehaviour {
 		m.speed_ = currentSpeed_;
 		KeyObject k = g.GetComponent<KeyObject> ();
 		int key = Random.Range (0, 4);
-		k.SetKey (key,true);
+		k.SetKey (key,false);
 		Debug.Log(key);
 		k.InitScore (currentScore_, scoreMan);
 		TextFollow t = g.GetComponent<TextFollow> ();
@@ -77,17 +85,41 @@ public class Spawner : MonoBehaviour {
 		GameObject g=(GameObject)GameObject.Instantiate (template,
 		                                                 pos,
 		                                                 Quaternion.identity);
+		GameObject text=(GameObject)GameObject.Instantiate (textTemplate);
+		
+		
+		GameObject canvas = GameObject.FindGameObjectWithTag ("Canvas");
+
+
 		Mover m = g.GetComponent<Mover> ();
 		m.speed_ = currentSpeed_;
 		KeyObject k = g.GetComponent<KeyObject> ();
 		int key = Random.Range (0, 8);
 		k.SetKey (key,false);
 		k.Disable ();
+		TextFollow t = g.GetComponent<TextFollow> ();
+		t.Init (text,(int) KeyObject.KEY_REQUIREMENT.KEY_NULL_MAX);
+	}
 
+	void TrySpawnObjects()
+	{
+		int rand = Random.Range (0, 100);
+		if (rand < spawnChance) {
+						SpawnKeyObj ();
+			spawnChance=baseSpawnChance;
+				} else {
+			spawnChance+=spawnChanceIncrment;		
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (spawnTimer > spawnFrequency) {
+						spawnTimer = 0;
+						TrySpawnObjects ();
+				} else {
+			spawnTimer+=Time.deltaTime;		
+		}
 		if (Input.GetButtonDown("Debug")) {
 			SpawnKeyObj();		
 		}
