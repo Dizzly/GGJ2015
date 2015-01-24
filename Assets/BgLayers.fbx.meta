@@ -1,0 +1,423 @@
+fileFormatVersion: 2
+guid: 3562952346cc3474f82bd30aa758baed
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: background
+    100002: background 1
+    100004: background 2
+    100006: //RootNode
+    100008: leaves
+    100010: leaves 1
+    100012: leaves 2
+    100014: leaves1
+    100016: leaves1 1
+    100018: leaves1 2
+    100020: leaves2
+    100022: leaves2 1
+    100024: leaves3
+    100026: leaves3 1
+    100028: leaves4
+    100030: leaves4 1
+    100032: leaves4 2
+    100034: leaves5
+    100036: leaves5 1
+    100038: leaves6
+    100040: leaves6 1
+    100042: leaves7
+    100044: leaves7 1
+    100046: leaves_Plat4
+    100048: leaves_Plat4 1
+    100050: leaves_Plat4 2
+    100052: Level1
+    100054: Level2
+    100056: Level3
+    100058: Plat1
+    100060: Plat1 1
+    100062: Plat1 2
+    100064: Plat2
+    100066: Plat2 1
+    100068: Plat2 2
+    100070: plat3
+    100072: plat3 1
+    100074: plat3 2
+    100076: plat3_leaves
+    100078: plat3_leaves 1
+    100080: plat3_leaves 2
+    100082: Plat4
+    100084: Plat4 1
+    100086: Plat4 2
+    100088: plat5
+    100090: plat5 1
+    100092: plat5 2
+    100094: tree
+    100096: tree 1
+    100098: tree1
+    100100: tree1 1
+    100102: tree1 2
+    100104: tree2
+    100106: tree2 1
+    100108: tree3
+    100110: tree3 1
+    100112: tree4
+    100114: tree4 1
+    100116: tree4 2
+    100118: tree5
+    100120: tree5 1
+    100122: tree6
+    100124: tree6 1
+    100126: tree7
+    100128: tree7 1
+    100130: tree7 2
+    100132: trees
+    100134: trees 1
+    100136: trees 2
+    100138: trees_plat3
+    100140: trees_plat3 1
+    100142: trees_plat3 2
+    100144: trees_plat4
+    100146: trees_plat4 1
+    100148: trees_plat4 2
+    100150: vines1
+    100152: vines1 1
+    100154: vines1 2
+    100156: vines2
+    100158: vines2 1
+    100160: vines2 2
+    100162: vines3
+    100164: vines3 1
+    100166: vines3 2
+    400000: background
+    400002: background 1
+    400004: background 2
+    400006: //RootNode
+    400008: leaves
+    400010: leaves 1
+    400012: leaves 2
+    400014: leaves1
+    400016: leaves1 1
+    400018: leaves1 2
+    400020: leaves2
+    400022: leaves2 1
+    400024: leaves3
+    400026: leaves3 1
+    400028: leaves4
+    400030: leaves4 1
+    400032: leaves4 2
+    400034: leaves5
+    400036: leaves5 1
+    400038: leaves6
+    400040: leaves6 1
+    400042: leaves7
+    400044: leaves7 1
+    400046: leaves_Plat4
+    400048: leaves_Plat4 1
+    400050: leaves_Plat4 2
+    400052: Level1
+    400054: Level2
+    400056: Level3
+    400058: Plat1
+    400060: Plat1 1
+    400062: Plat1 2
+    400064: Plat2
+    400066: Plat2 1
+    400068: Plat2 2
+    400070: plat3
+    400072: plat3 1
+    400074: plat3 2
+    400076: plat3_leaves
+    400078: plat3_leaves 1
+    400080: plat3_leaves 2
+    400082: Plat4
+    400084: Plat4 1
+    400086: Plat4 2
+    400088: plat5
+    400090: plat5 1
+    400092: plat5 2
+    400094: tree
+    400096: tree 1
+    400098: tree1
+    400100: tree1 1
+    400102: tree1 2
+    400104: tree2
+    400106: tree2 1
+    400108: tree3
+    400110: tree3 1
+    400112: tree4
+    400114: tree4 1
+    400116: tree4 2
+    400118: tree5
+    400120: tree5 1
+    400122: tree6
+    400124: tree6 1
+    400126: tree7
+    400128: tree7 1
+    400130: tree7 2
+    400132: trees
+    400134: trees 1
+    400136: trees 2
+    400138: trees_plat3
+    400140: trees_plat3 1
+    400142: trees_plat3 2
+    400144: trees_plat4
+    400146: trees_plat4 1
+    400148: trees_plat4 2
+    400150: vines1
+    400152: vines1 1
+    400154: vines1 2
+    400156: vines2
+    400158: vines2 1
+    400160: vines2 2
+    400162: vines3
+    400164: vines3 1
+    400166: vines3 2
+    2300000: background
+    2300002: background 1
+    2300004: background 2
+    2300006: leaves
+    2300008: leaves 1
+    2300010: leaves 2
+    2300012: leaves1
+    2300014: leaves1 1
+    2300016: leaves1 2
+    2300018: leaves2
+    2300020: leaves2 1
+    2300022: leaves3
+    2300024: leaves3 1
+    2300026: leaves4
+    2300028: leaves4 1
+    2300030: leaves4 2
+    2300032: leaves5
+    2300034: leaves5 1
+    2300036: leaves6
+    2300038: leaves6 1
+    2300040: leaves7
+    2300042: leaves7 1
+    2300044: Plat1
+    2300046: Plat1 1
+    2300048: Plat1 2
+    2300050: Plat2
+    2300052: Plat2 1
+    2300054: Plat2 2
+    2300056: plat3
+    2300058: plat3 1
+    2300060: plat3 2
+    2300062: Plat4
+    2300064: Plat4 1
+    2300066: Plat4 2
+    2300068: plat5
+    2300070: plat5 1
+    2300072: plat5 2
+    2300074: tree
+    2300076: tree 1
+    2300078: tree1
+    2300080: tree1 1
+    2300082: tree1 2
+    2300084: tree2
+    2300086: tree2 1
+    2300088: tree3
+    2300090: tree3 1
+    2300092: tree4
+    2300094: tree4 1
+    2300096: tree4 2
+    2300098: tree5
+    2300100: tree5 1
+    2300102: tree6
+    2300104: tree6 1
+    2300106: tree7
+    2300108: tree7 1
+    2300110: tree7 2
+    2300112: vines1
+    2300114: vines1 1
+    2300116: vines1 2
+    2300118: vines2
+    2300120: vines2 1
+    2300122: vines2 2
+    2300124: vines3
+    2300126: vines3 1
+    2300128: vines3 2
+    3300000: background
+    3300002: background 1
+    3300004: background 2
+    3300006: leaves
+    3300008: leaves 1
+    3300010: leaves 2
+    3300012: leaves1
+    3300014: leaves1 1
+    3300016: leaves1 2
+    3300018: leaves2
+    3300020: leaves2 1
+    3300022: leaves3
+    3300024: leaves3 1
+    3300026: leaves4
+    3300028: leaves4 1
+    3300030: leaves4 2
+    3300032: leaves5
+    3300034: leaves5 1
+    3300036: leaves6
+    3300038: leaves6 1
+    3300040: leaves7
+    3300042: leaves7 1
+    3300044: Plat1
+    3300046: Plat1 1
+    3300048: Plat1 2
+    3300050: Plat2
+    3300052: Plat2 1
+    3300054: Plat2 2
+    3300056: plat3
+    3300058: plat3 1
+    3300060: plat3 2
+    3300062: Plat4
+    3300064: Plat4 1
+    3300066: Plat4 2
+    3300068: plat5
+    3300070: plat5 1
+    3300072: plat5 2
+    3300074: tree
+    3300076: tree 1
+    3300078: tree1
+    3300080: tree1 1
+    3300082: tree1 2
+    3300084: tree2
+    3300086: tree2 1
+    3300088: tree3
+    3300090: tree3 1
+    3300092: tree4
+    3300094: tree4 1
+    3300096: tree4 2
+    3300098: tree5
+    3300100: tree5 1
+    3300102: tree6
+    3300104: tree6 1
+    3300106: tree7
+    3300108: tree7 1
+    3300110: tree7 2
+    3300112: vines1
+    3300114: vines1 1
+    3300116: vines1 2
+    3300118: vines2
+    3300120: vines2 1
+    3300122: vines2 2
+    3300124: vines3
+    3300126: vines3 1
+    3300128: vines3 2
+    4300000: background
+    4300002: Plat2
+    4300004: Plat1
+    4300006: plat5
+    4300008: plat3
+    4300010: Plat4
+    4300012: tree
+    4300014: tree1
+    4300016: tree2
+    4300018: tree3
+    4300020: tree7
+    4300022: tree5
+    4300024: tree4
+    4300026: leaves
+    4300028: leaves1
+    4300030: leaves2
+    4300032: leaves3
+    4300034: leaves4
+    4300036: leaves5
+    4300038: leaves6
+    4300040: vines1
+    4300042: vines2
+    4300044: vines3
+    4300046: background
+    4300048: Plat1
+    4300050: Plat2
+    4300052: plat3
+    4300054: Plat4
+    4300056: plat5
+    4300058: tree1
+    4300060: tree3
+    4300062: tree7
+    4300064: tree6
+    4300066: tree5
+    4300068: tree4
+    4300070: leaves
+    4300072: leaves1
+    4300074: leaves2
+    4300076: leaves7
+    4300078: leaves4
+    4300080: leaves6
+    4300082: vines1
+    4300084: vines2
+    4300086: vines3
+    4300088: background
+    4300090: Plat2
+    4300092: Plat1
+    4300094: plat5
+    4300096: plat3
+    4300098: Plat4
+    4300100: tree
+    4300102: tree1
+    4300104: tree2
+    4300106: tree7
+    4300108: tree6
+    4300110: tree4
+    4300112: leaves
+    4300114: leaves1
+    4300116: leaves7
+    4300118: leaves3
+    4300120: leaves4
+    4300122: leaves5
+    4300124: vines1
+    4300126: vines2
+    4300128: vines3
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 

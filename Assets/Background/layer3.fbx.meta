@@ -1,0 +1,206 @@
+fileFormatVersion: 2
+guid: f6001f737b8811847846be1f409539f3
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: leaves3
+    100004: leaves3 1
+    100006: leaves4
+    100008: leaves4 1
+    100010: leaves4 2
+    100012: leaves5
+    100014: leaves5 1
+    100016: leaves6
+    100018: leaves6 1
+    100020: Level1
+    100022: Level2
+    100024: Level3
+    100026: plat3
+    100028: plat3 1
+    100030: plat3 2
+    100032: plat3_leaves
+    100034: plat3_leaves 1
+    100036: plat3_leaves 2
+    100038: tree
+    100040: tree 1
+    100042: tree1
+    100044: tree1 1
+    100046: tree1 2
+    100048: tree2
+    100050: tree2 1
+    100052: tree3
+    100054: tree3 1
+    100056: trees
+    100058: trees 1
+    100060: trees 2
+    100062: trees_plat3
+    100064: trees_plat3 1
+    100066: trees_plat3 2
+    100068: vines1
+    100070: vines1 1
+    100072: vines1 2
+    400000: //RootNode
+    400002: leaves3
+    400004: leaves3 1
+    400006: leaves4
+    400008: leaves4 1
+    400010: leaves4 2
+    400012: leaves5
+    400014: leaves5 1
+    400016: leaves6
+    400018: leaves6 1
+    400020: Level1
+    400022: Level2
+    400024: Level3
+    400026: plat3
+    400028: plat3 1
+    400030: plat3 2
+    400032: plat3_leaves
+    400034: plat3_leaves 1
+    400036: plat3_leaves 2
+    400038: tree
+    400040: tree 1
+    400042: tree1
+    400044: tree1 1
+    400046: tree1 2
+    400048: tree2
+    400050: tree2 1
+    400052: tree3
+    400054: tree3 1
+    400056: trees
+    400058: trees 1
+    400060: trees 2
+    400062: trees_plat3
+    400064: trees_plat3 1
+    400066: trees_plat3 2
+    400068: vines1
+    400070: vines1 1
+    400072: vines1 2
+    2300000: leaves3
+    2300002: leaves3 1
+    2300004: leaves4
+    2300006: leaves4 1
+    2300008: leaves4 2
+    2300010: leaves5
+    2300012: leaves5 1
+    2300014: leaves6
+    2300016: leaves6 1
+    2300018: plat3
+    2300020: plat3 1
+    2300022: plat3 2
+    2300024: tree
+    2300026: tree 1
+    2300028: tree1
+    2300030: tree1 1
+    2300032: tree1 2
+    2300034: tree2
+    2300036: tree2 1
+    2300038: tree3
+    2300040: tree3 1
+    2300042: vines1
+    2300044: vines1 1
+    2300046: vines1 2
+    3300000: leaves3
+    3300002: leaves3 1
+    3300004: leaves4
+    3300006: leaves4 1
+    3300008: leaves4 2
+    3300010: leaves5
+    3300012: leaves5 1
+    3300014: leaves6
+    3300016: leaves6 1
+    3300018: plat3
+    3300020: plat3 1
+    3300022: plat3 2
+    3300024: tree
+    3300026: tree 1
+    3300028: tree1
+    3300030: tree1 1
+    3300032: tree1 2
+    3300034: tree2
+    3300036: tree2 1
+    3300038: tree3
+    3300040: tree3 1
+    3300042: vines1
+    3300044: vines1 1
+    3300046: vines1 2
+    4300000: plat3
+    4300002: tree
+    4300004: tree1
+    4300006: tree2
+    4300008: tree3
+    4300010: leaves3
+    4300012: leaves4
+    4300014: leaves5
+    4300016: leaves6
+    4300018: vines1
+    4300020: plat3
+    4300022: tree1
+    4300024: tree3
+    4300026: leaves4
+    4300028: leaves6
+    4300030: vines1
+    4300032: plat3
+    4300034: tree
+    4300036: tree1
+    4300038: tree2
+    4300040: leaves3
+    4300042: leaves4
+    4300044: leaves5
+    4300046: vines1
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 

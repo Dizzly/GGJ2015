@@ -31,6 +31,7 @@ public class Spawner : MonoBehaviour {
 	public float minXSpawn;
 	public float maxXSpawn;
 
+
    public int bossBaseSpawnCount = 6;
    public int wavesBaseCount = 6;
 
@@ -39,14 +40,14 @@ public class Spawner : MonoBehaviour {
 
    public float waveBaseSpacing = 3.0f;
    private float waveSpacing;
-
+	
+	public float baseSpeed = 2.0f;
+	public float currentSpeed_;
+	public int currentScore_=100;
 
    public float xEstent;
 
-   public float baseSpeed = 2.0f;
-	private float currentSpeed_ ;
 
-	public int currentScore_ = 100;
 
    //This parameter multiple seconds and tell us 
    //how long between two different spawn trials are passed
@@ -257,6 +258,7 @@ public class Spawner : MonoBehaviour {
 		}
 	}
 
+
    void SpawnWaveKeyObj()
    {
       Vector3 pos = this.transform.position;
@@ -335,6 +337,7 @@ public class Spawner : MonoBehaviour {
    	//TODO
       //Aknowelegde DuD that we have to start animation
       //Fire event to someone
+
 	}
 
 	///This function is called when the Animation is finished

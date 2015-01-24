@@ -30,9 +30,17 @@ public class KeyObject : MonoBehaviour {
 		Color.green,
 	};
 
+	public AudioClip[] clips= new AudioClip[4];
+
 	// Use this for initialization
 	void Start () {
 	
+	}
+
+	public AudioClip GetAudioClip()
+	{
+		return clips[key_req];
+
 	}
 
 	public int GetRequirement()
