@@ -4,7 +4,7 @@ using System.Collections;
 public class Parallax : MonoBehaviour {
 
 	private Vector3 newPosition;
-	public float _speed = 1.0f;
+	public float _speed = 3.0f;
 	public float _Zoffset=1.0f;
 	public float _objWidth;
 	public bool _moveBackgound;
@@ -17,9 +17,10 @@ public class Parallax : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		float speed = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<SpeedVar> ().GlobalSpeed;
 		if(_moveBackgound)
 		{
-			transform.Translate((-_speed/_Zoffset) * Time.deltaTime,0f,0f);
+			transform.Translate((-speed/_Zoffset) * Time.deltaTime,0f,0f);
 		}
 		else
 		{

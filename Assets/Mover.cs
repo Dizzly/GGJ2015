@@ -12,8 +12,9 @@ public class Mover : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		float speed = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<SpeedVar> ().GlobalSpeed;
 
-						this.transform.Translate (new Vector3 (-speed_ * Time.deltaTime, 0, 0));
+						this.transform.Translate (new Vector3 (-speed* Time.deltaTime, 0, 0));
 		if (Input.GetButtonDown ("Slowdown")) {
 			speed_-=0.1f;
 		}

@@ -28,7 +28,7 @@ ModelImporter:
     400020: pCube1
     400022: Skeleton
     4300000: pCube1
-    7400000: Take 001
+    7400000: Panting
     9500000: //RootNode
     11100000: //RootNode
     13700000: pCube1
@@ -49,7 +49,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: Take 001
+      name: Panting
       takeName: Take 001
       firstFrame: 1
       lastFrame: 100
