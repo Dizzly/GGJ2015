@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class KeyObject : MonoBehaviour {
 
@@ -10,10 +11,6 @@ public class KeyObject : MonoBehaviour {
 		KEY_2=1,
 		KEY_3=2,
 		KEY_4=3,
-		KEY_MOD_1=4,
-		KEY_MOD_2=5,
-		KEY_MOD_3=6,
-		KEY_MOD_4=7,
 		KEY_NULL_MAX=8,
 	}
 
@@ -26,11 +23,7 @@ public class KeyObject : MonoBehaviour {
 	int scoreValue;
 	ScoreManager scoreMan;
 
-	public Color[] keyColors = new Color[8]{
-		Color.red,
-		Color.blue,
-		Color.yellow,
-		Color.green,
+	public Color[] keyColors = new Color[4]{
 		Color.red,
 		Color.blue,
 		Color.yellow,
@@ -68,11 +61,24 @@ public class KeyObject : MonoBehaviour {
 		scoreMan = s;
 	}
 
-	public void SetKey(int key)
+	public void SetKey(int key,bool isSpecial)
 	{
 		key_req = key;
-		gameObject.renderer.material.color = keyColors [key];
-		GetComponentInChildren<LightPulser> ().l.color = keyColors [key];
+		if (!isSpecial) {
+						gameObject.renderer.material.color = keyColors [key];
+						GetComponentInChildren<LightPulser> ().l.color = keyColors [key];
+				} else {
+			//pick another random color that is not the right color
+			int pick=Random.Range(0,4);
+			if(pick==key)
+			{
+				pick+=Random.Range(1,4);
+				pick=pick%4;
+			}
+			gameObject.renderer.material.color=keyColors[pick];
+			
+			GetComponentInChildren<LightPulser> ().l.color = keyColors [pick];
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D col) 

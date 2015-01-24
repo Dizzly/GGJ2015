@@ -14,6 +14,9 @@ public class Player : MonoBehaviour
 		public int readIndex = 0;
 		KeyObject[] keysToHitQueue = new KeyObject[maxKeyObjects_];
 
+	public float flashDurationInSec;
+	float flashTimer=0;
+
 		public void AddKeyObject (KeyObject k)
 		{
 				keysToHitQueue [writeIndex] = k;
@@ -51,6 +54,15 @@ public class Player : MonoBehaviour
 	
 		}
 
+	void FlashLight(Color c)
+	{
+		Light l = GetComponent<Light> ();
+		l.enabled = true;
+		l.color = c;
+		flashTimer = flashDurationInSec;
+
+	}
+
 		int TranslateInput ()
 		{
 				int key = (int)KeyObject.KEY_REQUIREMENT.KEY_NULL_MAX;
@@ -64,12 +76,6 @@ public class Player : MonoBehaviour
 						key = (int)KeyObject.KEY_REQUIREMENT.KEY_4;
 		
 				}
-				if (Input.GetButton ("ModKey")) {
-						if (key != (int)KeyObject.KEY_REQUIREMENT.KEY_NULL_MAX) {
-								key += 4;
-						}
-
-				}
 				return key;
 		}
 	
@@ -77,12 +83,25 @@ public class Player : MonoBehaviour
 		void Update ()
 		{
 
+				//disable if for the light flash
+				if (flashTimer!=0) {
+			flashTimer-=Time.deltaTime;
+			if(flashTimer<=0)
+			{
+				Light l = GetComponent<Light> ();
+				l.enabled = false;
+			}
+		}
+				
+
+
 				if (keysToHitQueue [readIndex] != null) {
 						int key = TranslateInput ();
 						KeyObject k = keysToHitQueue [readIndex];
 						if (k.GetRequirement () == key) {
 								k.IsComplete (true);
 				keysToHitQueue[readIndex]=null;
+				FlashLight(k.keyColors[key]);
 								IncrementRead ();
 			} else if(key!=(int)KeyObject.KEY_REQUIREMENT.KEY_NULL_MAX) {
 								//LooseGame ();

@@ -6,6 +6,7 @@ public class Spawner : MonoBehaviour {
 
 
 	public GameObject template;
+	public GameObject textTemplate;
 	public ScoreManager scoreMan;
 
 	public List<Transform> spawnPos= new List<Transform>();
@@ -40,13 +41,21 @@ public class Spawner : MonoBehaviour {
 		GameObject g=(GameObject)GameObject.Instantiate (template,
 		                                                 pos,
 		                                                 Quaternion.identity);
+		GameObject text=(GameObject)GameObject.Instantiate (textTemplate);
+
+
+		GameObject canvas = GameObject.FindGameObjectWithTag ("Canvas");
+
+		text.transform.SetParent(canvas.transform,false);
 		Mover m = g.GetComponent<Mover> ();
 		m.speed_ = currentSpeed_;
 		KeyObject k = g.GetComponent<KeyObject> ();
 		int key = Random.Range (0, 4);
-		k.SetKey (key);
+		k.SetKey (key,false);
 		Debug.Log(key);
 		k.InitScore (currentScore_, scoreMan);
+		TextFollow t = g.GetComponent<TextFollow> ();
+		t.Init (text, key);
 	}
 
 	void SpawnInactiveKeyObj()
@@ -72,7 +81,7 @@ public class Spawner : MonoBehaviour {
 		m.speed_ = currentSpeed_;
 		KeyObject k = g.GetComponent<KeyObject> ();
 		int key = Random.Range (0, 8);
-		k.SetKey (key);
+		k.SetKey (key,false);
 		k.Disable ();
 
 	}
