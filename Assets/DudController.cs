@@ -15,6 +15,8 @@ public class DudController : MonoBehaviour
 		public float shockedDelay = 3.0f;
 		public	float timer = -0.1f;
 
+	private float oldSpeed=0;
+
 		public bool isAnimating = false;
 		public bool shouldMove = false;
 		public bool isShocked = false;
@@ -30,14 +32,16 @@ public class DudController : MonoBehaviour
 				anim.Stop ();
 		}
 
-		void StartAnimation ()
+		public void StartAnimation ()
 		{
 				isAnimating = true;
 				shouldMove = true;
 				anim.Play ("Panting");
+		oldSpeed = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<SpeedVar> ().GlobalSpeed;
+		GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<SpeedVar> ().GlobalSpeed = 1.4f;
 		}
 
-		void StopAnimation ()
+		public void StopAnimation ()
 		{
 				stopFight = true;
 		}
@@ -49,7 +53,7 @@ public class DudController : MonoBehaviour
 						destination = (Random.insideUnitSphere * 0.4f) + this.transform.position;
 						destination.z = 0;
 						destination.y = this.transform.position.y;
-				} else {
+				} else if(this.transform.position.x<7) {
 						this.transform.Translate ((destination - this.transform.position).normalized * -xSpeed * Time.deltaTime);
 				}
 		}
@@ -69,8 +73,7 @@ public class DudController : MonoBehaviour
 										shouldMove = false;
 										//play shocked animation
 										timer = shockedDelay;
-										anim.Rewind ();
-										anim.Stop ();
+										
 										this.transform.Rotate (new Vector3 (0, 180, 0));
 										isShocked = true;
 								}
@@ -83,6 +86,8 @@ public class DudController : MonoBehaviour
 										//this.transform.Rotate (new Vector3(0,180,0));
 										destination = this.transform.position;
 										anim.Play ();
+										GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner>().EndBossAnimation();
+					GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<SpeedVar> ().GlobalSpeed=oldSpeed+0.4f;
 										startRunning = true;
 								}
 								if (startRunning) {
@@ -96,6 +101,8 @@ public class DudController : MonoBehaviour
 										isShocked = false;
 										startRunning = false;
 										isAnimating = false;
+					GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner>();
+					//GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<SpeedVar> ().GlobalSpeed=oldSpeed;
 										timer = 0;
 
 								}

@@ -4,7 +4,6 @@ using System.Collections;
 public class Parallax : MonoBehaviour {
 
 	private Vector3 newPosition;
-	public float _speed = 3.0f;
 	public float _Zoffset=1.0f;
 	public float _objWidth;
 	public bool _moveBackgound;

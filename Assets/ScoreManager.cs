@@ -4,17 +4,28 @@ using System.Collections;
 public class ScoreManager : MonoBehaviour {
 
 	int currentScore;
+
+	private int lastRecorderdScore = 0;
+
 	public int bossScore = 500;
+
+	public void UpdateLastScore()
+	{
+		lastRecorderdScore = currentScore;
+		bossScore *= 3;
+	}
 
 	public void AwardScore(int i)
 	{
 		currentScore += i;
-		if (currentScore >= bossScore)
+		if (currentScore - lastRecorderdScore >= bossScore)
 		{
 			//Acquiring spawner via Tag
 			GameObject spawnerObj = GameObject.FindWithTag("Spawner");
 			Spawner spawner = (Spawner)spawnerObj.GetComponent(typeof(Spawner));
 			spawner.TrackBallStatus();
+
+
 		}
 	}
 	// Use this for initialization
