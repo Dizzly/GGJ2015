@@ -14,7 +14,9 @@ public class Spawner : MonoBehaviour {
 		BossFighting,
 		EndBossFighting
 	};
-	
+
+	private object m_Handle = new object();
+
 	private GameStatus gs;
 
 	public GameObject template;
@@ -26,7 +28,7 @@ public class Spawner : MonoBehaviour {
 	//Tracking position on a sorted List
 	private List<Transform> trackedPosition = new List<Transform> ();
 	public float baseMinimumSpacing = 3.0f;
-   private float minimumSpacing;
+    private float minimumSpacing;
 
 	public float minXSpawn;
 	public float maxXSpawn;
@@ -42,10 +44,10 @@ public class Spawner : MonoBehaviour {
    private float waveSpacing;
 	
 	public float baseSpeed = 2.0f;
-	public float currentSpeed_;
+	private float currentSpeed_;
 	public int currentScore_=100;
 
-   public float xEstent;
+    public float xEstent;
 
 
 
@@ -184,37 +186,39 @@ public class Spawner : MonoBehaviour {
 
 		//Condition on general spawning with minium space distance
 		int insertIndex = -1;
-
-		if (isPositionAvailable(pos, ref insertIndex))
+		lock (m_Handle)
 		{
-			//Predicting where this posSpawn will make the player		    
-			GameObject g=(GameObject)GameObject.Instantiate (template,
-			                                                 pos,
-			                                                 Quaternion.identity);
-			GameObject text=(GameObject)GameObject.Instantiate (textTemplate);
-			
-			
-			GameObject canvas = GameObject.FindGameObjectWithTag ("Canvas");
-			
-			text.transform.SetParent(canvas.transform,false);
-
-         //Adding rigidbody force over y
-         Rigidbody2D rd = g.GetComponent<Rigidbody2D>();
-         rd.AddForce(new Vector2(0,Random.Range(1,10)));
-
-			Mover m = g.GetComponent<Mover> ();
-			m.speed_ = currentSpeed_;
-			KeyObject k = g.GetComponent<KeyObject> ();
-			int key = Random.Range (0, 4);
-			k.SetKey (key,false);
-			Debug.Log(key);
-			k.InitScore (currentScore_, scoreMan);
-			TextFollow t = g.GetComponent<TextFollow> ();
-			t.Init (text, key);
-
-
-			trackedPosition.Insert(insertIndex,k.transform);
-
+			if (isPositionAvailable(pos, ref insertIndex))
+			{
+				//Predicting where this posSpawn will make the player		    
+				GameObject g=(GameObject)GameObject.Instantiate (template,
+				                                                 pos,
+				                                                 Quaternion.identity);
+				GameObject text=(GameObject)GameObject.Instantiate (textTemplate);
+				
+				
+				GameObject canvas = GameObject.FindGameObjectWithTag ("Canvas");
+				
+				text.transform.SetParent(canvas.transform,false);
+				
+				//Adding rigidbody force over y
+				Rigidbody2D rd = g.GetComponent<Rigidbody2D>();
+				rd.AddForce(new Vector2(0,Random.Range(1,10)));
+				
+				Mover m = g.GetComponent<Mover> ();
+				m.speed_ = currentSpeed_;
+				KeyObject k = g.GetComponent<KeyObject> ();
+				int key = Random.Range (0, 4);
+				k.SetKey (key,false);
+				Debug.Log(key);
+				k.InitScore (currentScore_, scoreMan);
+				TextFollow t = g.GetComponent<TextFollow> ();
+				t.Init (text, key);
+				
+				
+				trackedPosition.Insert(insertIndex,k.transform);
+				
+			}
 		}
 	}
 
@@ -270,6 +274,7 @@ public class Spawner : MonoBehaviour {
 
       //Condition on general spawning with minium space distance
       int insertIndex = -1;
+	
 
       if (isPositionAvailable(pos, ref insertIndex))
       {
@@ -286,7 +291,7 @@ public class Spawner : MonoBehaviour {
 
          //Adding rigidbody force over y
          Rigidbody2D rd = g.GetComponent<Rigidbody2D>();
-         rd.AddForce(new Vector2(0, Random.Range(1, 10)));
+         rd.velocity = new Vector2(0, Random.Range(5, 10));
 
          Mover m = g.GetComponent<Mover>();
          m.speed_ = currentSpeed_;
@@ -303,26 +308,28 @@ public class Spawner : MonoBehaviour {
          //managing the wave
          //We will hit this condition when calling with regenerated wave
          //we know here that next ball must be at minimum distance
-         if (bossSpawnCount == bossBaseSpawnCount) 
-         {
-            minimumSpacing = xEstent;
-         }
-         bossSpawnCount--;
-         if(bossSpawnCount == 0)
+		 
+		 bossSpawnCount = bossSpawnCount - 1;
+		 if(bossSpawnCount > 0)
          { 
-            wavesCount--;
-            //regenerating wave
-            //we need to add more space between this and the following wave
-            //trick to generate space between waves
-            minimumSpacing = waveSpacing;
-            bossSpawnCount = bossBaseSpawnCount;
+			minimumSpacing = xEstent;
+            
          }
-
-
-      }
-   }
-
-   //This methond is called from the ScoreManager to
+		else
+		{
+				wavesCount--;
+				//regenerating wave
+				//we need to add more space between this and the following wave
+				//trick to generate space between waves
+				bossSpawnCount = bossBaseSpawnCount;
+				minimumSpacing = waveSpacing;
+			}
+			
+			
+		}
+	}
+	
+	//This methond is called from the ScoreManager to
    //update us that we have to stop spawning the balls
 	public void TrackBallStatus()
 	{
@@ -415,7 +422,7 @@ public class Spawner : MonoBehaviour {
             {
                spawnTimer = 0;
                //If we finished the waves we change status
-               if(wavesCount != 0)
+               if(wavesCount > 0)
                {
                   SpawnWaveKeyObj();
                }

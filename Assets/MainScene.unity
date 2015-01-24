@@ -679,19 +679,16 @@ MonoBehaviour:
   minimumSpacing: .5
   minXSpawn: 0
   maxXSpawn: 8
-<<<<<<< HEAD
   currentSpeed_: 2
   currentScore_: 100
   spawnFrequency: 0
   baseSpawnChance: 0
   spawnChanceIncrment: 0
-=======
   currentSpeed_: 3
   currentScore_: 100
   spawnFrequency: .400000006
   baseSpawnChance: 45
   spawnChanceIncrment: 4
->>>>>>> 8fa158c5f299e07fbe05e527e096fa9ec74a5ef3
 --- !u!4 &781330940
 Transform:
   m_ObjectHideFlags: 0
