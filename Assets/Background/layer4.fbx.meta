@@ -1,0 +1,231 @@
+fileFormatVersion: 2
+guid: 840e81b148a2ffc4c916e035a7b28cb3
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: leaves
+    100004: leaves 1
+    100006: leaves 2
+    100008: leaves1
+    100010: leaves1 1
+    100012: leaves1 2
+    100014: leaves2
+    100016: leaves2 1
+    100018: leaves7
+    100020: leaves7 1
+    100022: leaves_Plat4
+    100024: leaves_Plat4 1
+    100026: leaves_Plat4 2
+    100028: Level1
+    100030: Level2
+    100032: Level3
+    100034: Plat4
+    100036: Plat4 1
+    100038: Plat4 2
+    100040: tree4
+    100042: tree4 1
+    100044: tree4 2
+    100046: tree5
+    100048: tree5 1
+    100050: tree6
+    100052: tree6 1
+    100054: tree7
+    100056: tree7 1
+    100058: tree7 2
+    100060: trees
+    100062: trees 1
+    100064: trees 2
+    100066: trees_plat4
+    100068: trees_plat4 1
+    100070: trees_plat4 2
+    100072: vines2
+    100074: vines2 1
+    100076: vines2 2
+    100078: vines3
+    100080: vines3 1
+    100082: vines3 2
+    400000: //RootNode
+    400002: leaves
+    400004: leaves 1
+    400006: leaves 2
+    400008: leaves1
+    400010: leaves1 1
+    400012: leaves1 2
+    400014: leaves2
+    400016: leaves2 1
+    400018: leaves7
+    400020: leaves7 1
+    400022: leaves_Plat4
+    400024: leaves_Plat4 1
+    400026: leaves_Plat4 2
+    400028: Level1
+    400030: Level2
+    400032: Level3
+    400034: Plat4
+    400036: Plat4 1
+    400038: Plat4 2
+    400040: tree4
+    400042: tree4 1
+    400044: tree4 2
+    400046: tree5
+    400048: tree5 1
+    400050: tree6
+    400052: tree6 1
+    400054: tree7
+    400056: tree7 1
+    400058: tree7 2
+    400060: trees
+    400062: trees 1
+    400064: trees 2
+    400066: trees_plat4
+    400068: trees_plat4 1
+    400070: trees_plat4 2
+    400072: vines2
+    400074: vines2 1
+    400076: vines2 2
+    400078: vines3
+    400080: vines3 1
+    400082: vines3 2
+    2300000: leaves
+    2300002: leaves 1
+    2300004: leaves 2
+    2300006: leaves1
+    2300008: leaves1 1
+    2300010: leaves1 2
+    2300012: leaves2
+    2300014: leaves2 1
+    2300016: leaves7
+    2300018: leaves7 1
+    2300020: Plat4
+    2300022: Plat4 1
+    2300024: Plat4 2
+    2300026: tree4
+    2300028: tree4 1
+    2300030: tree4 2
+    2300032: tree5
+    2300034: tree5 1
+    2300036: tree6
+    2300038: tree6 1
+    2300040: tree7
+    2300042: tree7 1
+    2300044: tree7 2
+    2300046: vines2
+    2300048: vines2 1
+    2300050: vines2 2
+    2300052: vines3
+    2300054: vines3 1
+    2300056: vines3 2
+    3300000: leaves
+    3300002: leaves 1
+    3300004: leaves 2
+    3300006: leaves1
+    3300008: leaves1 1
+    3300010: leaves1 2
+    3300012: leaves2
+    3300014: leaves2 1
+    3300016: leaves7
+    3300018: leaves7 1
+    3300020: Plat4
+    3300022: Plat4 1
+    3300024: Plat4 2
+    3300026: tree4
+    3300028: tree4 1
+    3300030: tree4 2
+    3300032: tree5
+    3300034: tree5 1
+    3300036: tree6
+    3300038: tree6 1
+    3300040: tree7
+    3300042: tree7 1
+    3300044: tree7 2
+    3300046: vines2
+    3300048: vines2 1
+    3300050: vines2 2
+    3300052: vines3
+    3300054: vines3 1
+    3300056: vines3 2
+    4300000: Plat4
+    4300002: tree7
+    4300004: tree5
+    4300006: tree4
+    4300008: leaves
+    4300010: leaves1
+    4300012: leaves2
+    4300014: vines2
+    4300016: vines3
+    4300018: Plat4
+    4300020: tree7
+    4300022: tree6
+    4300024: tree5
+    4300026: tree4
+    4300028: leaves
+    4300030: leaves1
+    4300032: leaves2
+    4300034: leaves7
+    4300036: vines2
+    4300038: vines3
+    4300040: Plat4
+    4300042: tree7
+    4300044: tree6
+    4300046: tree4
+    4300048: leaves
+    4300050: leaves1
+    4300052: leaves7
+    4300054: vines2
+    4300056: vines3
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 

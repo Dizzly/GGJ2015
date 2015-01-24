@@ -19,7 +19,6 @@ public class Spawner : MonoBehaviour {
 	public float minXSpawn;
 	public float maxXSpawn;
 
-
 	public float currentSpeed_=2.0f;
 	public int currentScore_=100;
 
@@ -213,8 +212,6 @@ public class Spawner : MonoBehaviour {
 			k.Disable ();
 
 		}
-
-		
 
 	}
 

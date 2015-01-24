@@ -102,6 +102,8 @@ public class Player : MonoBehaviour
 								k.IsComplete (true);
 				keysToHitQueue[readIndex]=null;
 				FlashLight(k.keyColors[key]);
+				AudioSource a=this.GetComponent<AudioSource>();
+				a.PlayOneShot(k.GetAudioClip());
 								IncrementRead ();
 			} else if(key!=(int)KeyObject.KEY_REQUIREMENT.KEY_NULL_MAX) {
 								//LooseGame ();
