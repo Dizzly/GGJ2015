@@ -6,6 +6,14 @@ public class TextFollow : MonoBehaviour {
 
 	 GameObject text;
 
+	string[] keyStrings= new string[4]
+	{
+		"B",
+		"X",
+		"Y",
+		"A"
+	};
+
 	// Use this for initialization
 	void Start () {
 	
@@ -14,7 +22,7 @@ public class TextFollow : MonoBehaviour {
 	public void Init(GameObject t, int key)
 	{
 		text = t;
-		t.GetComponent<Text> ().text = key.ToString ();
+		t.GetComponent<Text> ().text = keyStrings [key];
 	}
 	
 	// Update is called once per frame

@@ -51,7 +51,7 @@ public class Spawner : MonoBehaviour {
 		m.speed_ = currentSpeed_;
 		KeyObject k = g.GetComponent<KeyObject> ();
 		int key = Random.Range (0, 4);
-		k.SetKey (key,false);
+		k.SetKey (key,true);
 		Debug.Log(key);
 		k.InitScore (currentScore_, scoreMan);
 		TextFollow t = g.GetComponent<TextFollow> ();
