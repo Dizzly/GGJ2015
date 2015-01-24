@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class Spawner : MonoBehaviour {
 
@@ -39,42 +40,125 @@ public class Spawner : MonoBehaviour {
 						return 0;
 	}
 
+	bool isPositionAvailable(Vector3 pos, ref int insertIndex)
+	{
+		bool canSpawn = false;
+
+		if(pos.x > minXSpawn && pos.x < maxXSpawn)
+		{
+			if(trackedPosition.Count == 0){
+				canSpawn = true;
+				Debug.Log("Empty");
+				insertIndex = 0;
+			}
+			else if(trackedPosition.Count == 1)
+			{
+				if(Mathf.Abs(Mathf.Abs(pos.x) - Mathf.Abs(trackedPosition[0].position.x)) >= minimumSpacing)
+				{
+					if(pos.x < trackedPosition[0].position.x){
+						canSpawn = true;
+						insertIndex = 0;
+						Debug.Log("Ahead");					
+					}
+					else{
+						canSpawn = true;
+						insertIndex = 1;
+						Debug.Log("Ahead");
+					}
+				}
+			}
+			else{
+				for (int i = 0; i < trackedPosition.Count; i++) {
+					
+					//if i == 0 we just need to check against the first one if is suitable
+					if (i == 0)
+					{
+						if(pos.x < trackedPosition[i].position.x &&
+						   Mathf.Abs(Mathf.Abs(pos.x) - Mathf.Abs(trackedPosition[i].position.x)) >= minimumSpacing)
+						{
+							canSpawn = true;
+							insertIndex = i;
+							Debug.Log("Ahead");
+							return canSpawn;
+						}
+
+					}
+					// if i == 1 to count - 1 we need just to check if we are in good position
+					// and then checking spacing against current item
+					// and previous one
+					else if(i < trackedPosition.Count)
+
+					{
+						if(	pos.x > trackedPosition[i-1].position.x &&
+							pos.x < trackedPosition[i].position.x &&
+						   	Mathf.Abs(Mathf.Abs(pos.x) - Mathf.Abs(trackedPosition[i - 1].position.x)) >= minimumSpacing &&
+						   	Mathf.Abs(Mathf.Abs(pos.x) - Mathf.Abs(trackedPosition[i].position.x)) >= minimumSpacing)
+						{
+							canSpawn = true;
+							insertIndex = i;
+							Debug.Log("Insert");
+							return canSpawn;
+						}
+
+					}
+					//It can be after the last position
+					if(i == trackedPosition.Count - 1)
+					{
+						if(pos.x > trackedPosition[i].position.x &&
+						   Mathf.Abs(Mathf.Abs(pos.x) - Mathf.Abs(trackedPosition[i].position.x)) >= minimumSpacing)
+						{
+							Debug.Log("Back");
+							canSpawn = true;
+ 							insertIndex = i + 1;
+							return canSpawn;
+						}
+					}
+				} 
+			}
+		}
+		return canSpawn;
+	}
+
 	void SpawnKeyObj()
 	{
 		Vector3 pos = this.transform.position;
+
 		if(spawnPos.Count>0)
 		{
-			//Condition on general spawning
-			while(true)
-			{
-				pos=spawnPos[Random.Range(0,spawnPos.Count)].position;
-				if(pos.x>minXSpawn&&pos.x<maxXSpawn)
-				{
-					//Condition on position spacing
-					break;
-				}
-			}
+			pos=spawnPos[Random.Range(0,spawnPos.Count)].position;
 		}
 
-			                 
-		GameObject g=(GameObject)GameObject.Instantiate (template,
-		                                                 pos,
-		                                                 Quaternion.identity);
-		Mover m = g.GetComponent<Mover> ();
-		m.speed_ = currentSpeed_;
+		//Condition on general spawning with minium space distance
+		int insertIndex = -1;
 
-		KeyObject k = g.GetComponent<KeyObject> ();
-		Rigidbody2D rg = g.GetComponent<Rigidbody2D> ();
-		rg.velocity = new Vector2 (0, Random.Range(0,8));
+		if (isPositionAvailable(pos, ref insertIndex))
+		{
+			//Predicting where this posSpawn will make the player		    
+			GameObject g=(GameObject)GameObject.Instantiate (template,
+			                                                 pos,
+			                                                 Quaternion.identity);
+			Mover m = g.GetComponent<Mover> ();
+			m.speed_ = currentSpeed_;
+			
+			KeyObject k = g.GetComponent<KeyObject> ();
+			Rigidbody2D rg = g.GetComponent<Rigidbody2D> ();
+			rg.velocity = new Vector2 (0, Random.Range(0,8));
 
-		trackedPosition.Add(k.transform);
-		trackedPosition.Sort(CompareFunction);
+			//if(insertIndex == trackedPosition.Count){
+			//	trackedPosition.Add(k.transform);
+			//}
+			//Add(k.transform);
+			//else {
+				trackedPosition.Insert(insertIndex,k.transform);
+			//}
+			//trackedPosition.Sort(CompareFunction);
+			
+			//representing the color
+			int key = Random.Range (0, 4);
+			k.SetKey (key);
+			k.InitScore (currentScore_, scoreMan);
 
-		//representing the color
-		int key = Random.Range (0, 4);
-		k.SetKey (key);
-		Debug.Log(key);
-		k.InitScore (currentScore_, scoreMan);
+		}
 	}
 
 	void SpawnInactiveKeyObj()
@@ -82,33 +166,46 @@ public class Spawner : MonoBehaviour {
 		Vector3 pos = this.transform.position;
 		if(spawnPos.Count>0)
 		{
-			while(true)
-			{
-				pos=spawnPos[Random.Range(0,spawnPos.Count)].position;
-				if(pos.x>minXSpawn)
-				{
-					break;
-				}
-			}
+			pos=spawnPos[Random.Range(0,spawnPos.Count)].position;
 		}
-		
-		
-		GameObject g=(GameObject)GameObject.Instantiate (template,
-		                                                 pos,
-		                                                 Quaternion.identity);
-		Mover m = g.GetComponent<Mover> ();
-		m.speed_ = currentSpeed_;
-		KeyObject k = g.GetComponent<KeyObject> ();
-		int key = Random.Range (0, 8);
-		k.SetKey (key);
-		k.Disable ();
+
+		//Condition on general spawning with minium space distance
+		int insertIndex = -1;
+
+		if (isPositionAvailable (pos, ref insertIndex)) 
+		{
+			GameObject g=(GameObject)GameObject.Instantiate (template,
+			                                                 pos,
+			                                                 Quaternion.identity);
+			Mover m = g.GetComponent<Mover> ();
+			m.speed_ = currentSpeed_;
+			KeyObject k = g.GetComponent<KeyObject> ();
+
+			//Rigidbody2D rg = g.GetComponent<Rigidbody2D> ();
+
+			if(insertIndex == trackedPosition.Count){
+				trackedPosition.Add(k.transform);
+			}
+			//Add(k.transform);
+			else {
+				trackedPosition.Insert(insertIndex,k.transform);
+			}
+
+			int key = Random.Range (0, 8);
+			k.SetKey (key);
+			k.Disable ();
+
+		}
+
 
 	}
 
 	public void DeleteDestroyingObject(Transform tr)
 	{
 		//Assuming the order list when this function is called from KeyObject.cs we have to delete the first element
+		Debug.Log (trackedPosition.Count);
 		trackedPosition.Remove (tr);
+
 	}
 
 	// Update is called once per frame
