@@ -16,7 +16,6 @@ public class Player : MonoBehaviour
 
 		public void AddKeyObject (KeyObject k)
 		{
-		Debug.Log (writeIndex);
 				keysToHitQueue [writeIndex] = k;
 				IncrementWrite ();
 		}
@@ -83,7 +82,6 @@ public class Player : MonoBehaviour
 						KeyObject k = keysToHitQueue [readIndex];
 						if (k.GetRequirement () == key) {
 								k.IsComplete (true);
-				Debug.Log (readIndex);
 				keysToHitQueue[readIndex]=null;
 								IncrementRead ();
 			} else if(key!=(int)KeyObject.KEY_REQUIREMENT.KEY_NULL_MAX) {

@@ -65,6 +65,7 @@ public class KeyObject : MonoBehaviour {
 	{
 		key_req = key;
 		gameObject.renderer.material.color = keyColors [key];
+		GetComponentInChildren<LightPulser> ().l.color = keyColors [key];
 	}
 
 	void OnTriggerEnter2D(Collider2D col) 

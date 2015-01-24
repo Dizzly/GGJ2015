@@ -285,7 +285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   template: {fileID: 393774754}
-  scoreMan: {fileID: 0}
+  scoreMan: {fileID: 781330941}
 --- !u!4 &781330940
 Transform:
   m_ObjectHideFlags: 0
