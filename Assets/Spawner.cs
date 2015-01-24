@@ -387,7 +387,7 @@ public class Spawner : MonoBehaviour {
 	void UpdateScore()
 	{
 		GetComponent<ScoreManager> ().UpdateLastScore();
-		currentScore_ = currentScore_ * 3 / 2;
+		currentScore_ = currentScore_ * 5 / 3;
 	}
 
 	private void UpdateGameParameters()
@@ -395,16 +395,16 @@ public class Spawner : MonoBehaviour {
 		GameObject camObj = GameObject.FindWithTag("MainCamera");
 		SpeedVar sv = camObj.GetComponent<SpeedVar> ();
 
-		currentSpeed_ = baseSpeed = sv.GlobalSpeed += 0.5;
+		currentSpeed_ = baseSpeed = sv.GlobalSpeed += 0.25f;
 
-		spawnFrequency = spawnBaseFrequency -= 0.25f;
-		minimumSpacing = baseMinimumSpacing -= 0.3f;
-		xBaseEstentOffset -= 0.2;
+		spawnFrequency = spawnBaseFrequency -= 0.15f;
+		minimumSpacing = baseMinimumSpacing -= 0.2f;
+		xBaseEstentOffset -= 0.2f;
 		//currentSpeed_ = baseSpeed += 0.2f;
 		bossSpawnCount = bossBaseSpawnCount += 1;
 		wavesCount = wavesBaseCount += 1;
 
-		spawnChance = baseSpawnChance += 5;
+		spawnChance = baseSpawnChance += 3;
 		spawnChanceIncrment += 2;
 
 	}
@@ -494,9 +494,11 @@ public class Spawner : MonoBehaviour {
             break;
          case GameStatus.EndBossFighting:
             //TODO hit a breakpoint
-			BackToNormal();
-			gs=GameStatus.Normal;
-            int stop = 2;
+			if(trackedPosition.Count == 0)
+			{
+				BackToNormal();
+				gs=GameStatus.Normal;
+			}
             break;
          default:
             break;
