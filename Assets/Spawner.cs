@@ -1,11 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Spawner : MonoBehaviour {
 
 
 	public GameObject template;
 	public ScoreManager scoreMan;
+
+	public List<Transform> spawnPos= new List<Transform>();
+
+	public float minXSpawn;
+	public float maxXSpawn;
 
 	float currentSpeed_;
 	int currentScore_;
@@ -17,8 +23,22 @@ public class Spawner : MonoBehaviour {
 
 	void SpawnKeyObj()
 	{
+		Vector3 pos = this.transform.position;
+		if(spawnPos.Count>0)
+		{
+			while(true)
+			{
+				pos=spawnPos[Random.Range(0,spawnPos.Count)].position;
+				if(pos.x>minXSpawn&&pos.x<maxXSpawn)
+				{
+					break;
+				}
+			}
+		}
+
+			                 
 		GameObject g=(GameObject)GameObject.Instantiate (template,
-		                                                 this.transform.position,
+		                                                 pos,
 		                                                 Quaternion.identity);
 		Mover m = g.GetComponent<Mover> ();
 		m.speed_ = currentSpeed_;
@@ -27,6 +47,34 @@ public class Spawner : MonoBehaviour {
 		k.SetKey (key);
 		Debug.Log(key);
 		k.InitScore (currentScore_, scoreMan);
+	}
+
+	void SpawnInactiveKeyObj()
+	{
+		Vector3 pos = this.transform.position;
+		if(spawnPos.Count>0)
+		{
+			while(true)
+			{
+				pos=spawnPos[Random.Range(0,spawnPos.Count)].position;
+				if(pos.x>minXSpawn)
+				{
+					break;
+				}
+			}
+		}
+		
+		
+		GameObject g=(GameObject)GameObject.Instantiate (template,
+		                                                 pos,
+		                                                 Quaternion.identity);
+		Mover m = g.GetComponent<Mover> ();
+		m.speed_ = currentSpeed_;
+		KeyObject k = g.GetComponent<KeyObject> ();
+		int key = Random.Range (0, 8);
+		k.SetKey (key);
+		k.Disable ();
+
 	}
 	
 	// Update is called once per frame

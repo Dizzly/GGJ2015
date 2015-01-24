@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
 
 		int extraLives_ = 0;//no extra lives by default
 	
-		const int maxKeyObjects_ = 100;
+		const int maxKeyObjects_ = 30;
 		public int writeIndex = 0;
 		public int readIndex = 0;
 		KeyObject[] keysToHitQueue = new KeyObject[maxKeyObjects_];

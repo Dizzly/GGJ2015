@@ -21,6 +21,7 @@ public class KeyObject : MonoBehaviour {
 
 	bool complete=false;
 	bool added=false;
+	bool removed=false;
 
 	int scoreValue;
 	ScoreManager scoreMan;
@@ -55,6 +56,12 @@ public class KeyObject : MonoBehaviour {
 
 	}
 
+	public void Disable()
+	{
+		added = true;
+		removed = true;
+	}
+
 	public void InitScore(int score, ScoreManager s)
 	{
 		scoreValue = score;
@@ -82,17 +89,22 @@ public class KeyObject : MonoBehaviour {
 	{
 		if (!complete) {
 			Player p=col.gameObject.GetComponent<Player>();	
-			if(p)
+			if(p&&!removed)
 			{
+				removed=true;
 				p.LooseGame();
 			}
 		}
-	} 
+	}
 
 	// Update is called once per frame
 	void Update () {
 		if (complete) {
 				
+			DestroyObject(this.gameObject);
+		}
+
+		if (transform.position.y < -8) {
 			DestroyObject(this.gameObject);
 		}
 

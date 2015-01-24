@@ -23,7 +23,6 @@ public class ScoreManager : MonoBehaviour {
 	
 	void OnGUI()
 	{
-		
 		GUI.Label (new Rect(0, 0, 100, 100),currentScore.ToString());
 	}
 }
