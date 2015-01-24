@@ -345,7 +345,7 @@ public class Spawner : MonoBehaviour {
 
       spawnChance = 100;
       minimumSpacing = xEstent;
-      spawnFrequency = 0.0f;
+      spawnFrequency = 0.1f;
 
       bossSpawnCount= bossBaseSpawnCount;
       wavesCount = wavesBaseCount;
