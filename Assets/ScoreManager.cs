@@ -8,11 +8,20 @@ public class ScoreManager : MonoBehaviour {
 	private int lastRecorderdScore = 0;
 
 	public int bossScore = 500;
+	private int staticBossScore;
 
 	public void UpdateLastScore()
 	{
+		staticBossScore = bossScore;
 		lastRecorderdScore = currentScore;
 		bossScore *= 3;
+	}
+
+	public void Reset()
+	{
+		currentScore = 0;
+		lastRecorderdScore = 0;
+		bossScore = staticBossScore;
 	}
 
 	public void AwardScore(int i)
@@ -30,7 +39,7 @@ public class ScoreManager : MonoBehaviour {
 	}
 	// Use this for initialization
 	void Start () {
-	
+		staticBossScore = bossScore;
 	}
 	
 	// Update is called once per frame

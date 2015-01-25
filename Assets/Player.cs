@@ -14,8 +14,20 @@ public class Player : MonoBehaviour
 		public int readIndex = 0;
 		KeyObject[] keysToHitQueue = new KeyObject[maxKeyObjects_];
 
+	bool on=false;
+
 	public float flashDurationInSec;
 	float flashTimer=0;
+
+		public void Wakeup()
+		{
+			ParticleSystem s=GetComponentInChildren<ParticleSystem>();
+		s.Play ();
+		this.renderer.material.color = Color.white;
+		on = true;
+		writeIndex = 0;
+		readIndex = 0;
+		}
 
 		public void AddKeyObject (KeyObject k)
 		{
@@ -25,9 +37,17 @@ public class Player : MonoBehaviour
 
 		public void LooseGame ()
 		{
-		if (extraLives_==0) {
+		if (extraLives_==0&&on) {
 						print ("Dead");
-				}
+			readIndex=0;
+			writeIndex=0;
+			this.renderer.material.color=Color.black;
+			ParticleSystem s=GetComponentInChildren<ParticleSystem>();
+			s.Stop();
+			on=false;
+			//returning the game to its title screen
+			GameObject.FindGameObjectWithTag ("Finish").GetComponent<StartScript> ().TitleScreen ();
+		}
 
 		//DEBUG REMOVE ON RELEASE
 		IncrementRead ();
@@ -48,17 +68,14 @@ public class Player : MonoBehaviour
 						writeIndex = 0;		
 				}
 		}
-
-	void PlayNormal()
-	{
-
-
-	}
+	
 
 		void Start ()
 		{
-	
-		}
+		this.renderer.material.color = Color.black;
+		ParticleSystem s=GetComponentInChildren<ParticleSystem>();
+		s.Stop();
+	}
 
 	void FlashLight(Color c)
 	{
@@ -66,7 +83,9 @@ public class Player : MonoBehaviour
 		l.enabled = true;
 		l.color = c;
 		flashTimer = flashDurationInSec;
-
+		ParticleSystem s=GetComponentInChildren<ParticleSystem>();
+		s.startColor = c;
+		
 	}
 
 		int TranslateInput ()
@@ -88,30 +107,31 @@ public class Player : MonoBehaviour
 		// Update is called once per frame
 		void Update ()
 		{
+				if (on) {
+						//disable if for the light flash
+						if (flashTimer != 0) {
+								flashTimer -= Time.deltaTime;
+								if (flashTimer <= 0) {
+										Light l = GetComponent<Light> ();
+										l.enabled = false;
+										ParticleSystem s = GetComponentInChildren<ParticleSystem> ();
+										s.startColor = Color.white;
+								}
+						}
 
-				//disable if for the light flash
-				if (flashTimer!=0) {
-			flashTimer-=Time.deltaTime;
-			if(flashTimer<=0)
-			{
-				Light l = GetComponent<Light> ();
-				l.enabled = false;
-			}
-		}
-
-				if (keysToHitQueue [readIndex] != null) {
-						int key = TranslateInput ();
-						KeyObject k = keysToHitQueue [readIndex];
-						if (k.GetRequirement () == key) {
-								k.IsComplete (true);
-				keysToHitQueue[readIndex]=null;
-				FlashLight(k.keyColors[key]);
-				AudioSource a=this.GetComponent<AudioSource>();
-				a.PlayOneShot(k.GetAudioClip());
-								IncrementRead ();
-			} else if(key!=(int)KeyObject.KEY_REQUIREMENT.KEY_NULL_MAX) {
-								//LooseGame ();
-								/*This is because objects passing us do not
+						if (keysToHitQueue [readIndex] != null) {
+								int key = TranslateInput ();
+								KeyObject k = keysToHitQueue [readIndex];
+								if (k.GetRequirement () == key) {
+										k.IsComplete (true);
+										keysToHitQueue [readIndex] = null;
+										FlashLight (k.keyColors [key]);
+										AudioSource a = this.GetComponent<AudioSource> ();
+										a.PlayOneShot (k.GetAudioClip ());
+										IncrementRead ();
+								} else if (key != (int)KeyObject.KEY_REQUIREMENT.KEY_NULL_MAX) {
+										//LooseGame ();
+										/*This is because objects passing us do not
 								 * increment the read pointer
 								 * So for debug we remove this way of dying
 								 * 
@@ -119,8 +139,9 @@ public class Player : MonoBehaviour
 								 *
 								 *
 								 */
+								}
 						}
-				}
 
+				}
 		}
 }

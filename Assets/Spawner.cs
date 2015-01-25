@@ -61,7 +61,7 @@ public class Spawner : MonoBehaviour {
 		
 	public int baseSpawnChance;
 
-	public int spawnChanceIncrment;
+	public int spawnChanceIncrement;
 
 	int spawnChance;
 
@@ -92,6 +92,14 @@ public class Spawner : MonoBehaviour {
 		//Starting the game
 		gs = GameStatus.Normal;
 
+		//create a ball at every spawn location
+		//except for the spawners location which is i=0
+		for(int i=1;i<spawnPos.Count;++i)
+		{
+			SpawnInactiveKeyObj(spawnPos[i]);
+
+		}
+
 	}
 
 	private int CompareFunction(Transform c1, Transform c2)
@@ -107,6 +115,23 @@ public class Spawner : MonoBehaviour {
 						return 0;
 	}
 
+	public void Reset()
+	{
+		spawnChance = baseSpawnChance;
+		
+		minimumSpacing = baseMinimumSpacing;
+		
+		
+		bossSpawnCount = bossBaseSpawnCount;
+		wavesCount = wavesBaseCount;
+		
+		waveSpacing = waveBaseSpacing;
+		
+		spawnFrequency = spawnBaseFrequency;
+		currentScore_ = 100;
+		gs = GameStatus.Normal;
+	}
+	
 	bool isPositionAvailable(Vector3 pos, ref int insertIndex)
 	{
 		bool canSpawn = false;
@@ -237,44 +262,28 @@ public class Spawner : MonoBehaviour {
 		}
 	}
 
-	void SpawnInactiveKeyObj()
+	void SpawnInactiveKeyObj(Transform trans)
 	{
-		Vector3 pos = this.transform.position;
-		if(spawnPos.Count>0)
-		{
-			pos=spawnPos[Random.Range(0,spawnPos.Count)].position;
-		}
-
 		//Condition on general spawning with minium space distance
-		int insertIndex = -1;
-
-		if (isPositionAvailable (pos, ref insertIndex)) 
-		{
 			
 			GameObject g=(GameObject)GameObject.Instantiate (template,
-			                                                 pos,
+			                                                 trans.position,
 			                                                 Quaternion.identity);
-			GameObject text=(GameObject)GameObject.Instantiate (textTemplate);
 			
-			
-			GameObject canvas = GameObject.FindGameObjectWithTag ("Canvas");
-			
-			text.transform.SetParent(canvas.transform,false);
 
 			Mover m = g.GetComponent<Mover> ();
-			m.speed_ = currentSpeed_;
+		m.speed_ = -1;
 			KeyObject k = g.GetComponent<KeyObject> ();
 			int key = Random.Range (0, 8);
 			k.SetKey (key,false);
 			k.Disable ();
 			TextFollow t = g.GetComponent<TextFollow> ();
-			t.Init (text,(int) KeyObject.KEY_REQUIREMENT.KEY_NULL_MAX);
 
-				trackedPosition.Insert(insertIndex,k.transform);
+		t.gameObject.transform.SetParent (trans);
+		t.gameObject.GetComponent<Rigidbody2D> ().gravityScale = 0;
+		t.gameObject.transform.localScale = trans.localScale;
 
-			k.Disable ();
-
-		}
+		k.Disable ();
 	}
 
 
@@ -399,7 +408,7 @@ public class Spawner : MonoBehaviour {
 		GameObject camObj = GameObject.FindWithTag("MainCamera");
 		SpeedVar sv = camObj.GetComponent<SpeedVar> ();
 
-		currentSpeed_ = baseSpeed = sv.GlobalSpeed += 0.25f;
+		currentSpeed_ = baseSpeed = sv.GlobalSpeed += 0.1f;
 
 		spawnFrequency = spawnBaseFrequency -= 0.15f;
 		minimumSpacing = baseMinimumSpacing -= 0.2f;
@@ -409,7 +418,7 @@ public class Spawner : MonoBehaviour {
 		wavesCount = wavesBaseCount += 1;
 
 		spawnChance = baseSpawnChance += 3;
-		spawnChanceIncrment += 2;
+		spawnChanceIncrement += 2;
 
 	}
 
@@ -435,12 +444,19 @@ public class Spawner : MonoBehaviour {
 			SpawnKeyObj ();
 			spawnChance=baseSpawnChance;
 				} else {
-			spawnChance+=spawnChanceIncrment;		
+			spawnChance+=spawnChanceIncrement;		
 		}
 	}
 
 	// Update is called once per frame
 	void Update () {
+
+		if (trackedPosition.Count > 0) {
+			GameObject.FindGameObjectWithTag("Finish").GetComponent<StartScript>().SetSafeToStart(false);		
+		}
+		else{
+			GameObject.FindGameObjectWithTag("Finish").GetComponent<StartScript>().SetSafeToStart(true);	
+		}
 
       switch (gs)
       {

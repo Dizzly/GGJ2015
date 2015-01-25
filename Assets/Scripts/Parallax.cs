@@ -21,15 +21,16 @@ public class Parallax : MonoBehaviour {
 		{
 			transform.Translate((-speed/_Zoffset) * Time.deltaTime,0f,0f);
 		}
-		else
-		{
-			//do nothing
+		if (transform.position.x < -_objWidth * 2) {
+			transform.position = new Vector3 (spawnTransform.position.x + _objWidth,
+			                                                                 spawnTransform.position.y,
+			                                                                 spawnTransform.position.z);
 		}
 	}
 
 	void OnBecameInvisible() {
-		transform.position = new Vector3 (spawnTransform.position.x + _objWidth,
-		                                 spawnTransform.position.y,
-		                                 spawnTransform.position.z);
+		//transform.position = new Vector3 (spawnTransform.position.x + _objWidth,
+		//                                spawnTransform.position.y,
+		//                                spawnTransform.position.z);
 	}
 }

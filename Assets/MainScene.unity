@@ -2548,8 +2548,8 @@ MonoBehaviour:
   textTemplate: {fileID: 2081128687}
   scoreMan: {fileID: 781330941}
   spawnPos:
-  - {fileID: 1358921996}
   - {fileID: 781330940}
+  - {fileID: 1358921996}
   - {fileID: 1382879997}
   - {fileID: 68836936}
   - {fileID: 1239267611}
