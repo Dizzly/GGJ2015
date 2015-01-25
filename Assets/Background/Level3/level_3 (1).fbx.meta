@@ -1,66 +1,40 @@
 fileFormatVersion: 2
-guid: 3528dc7fe1245e44fac94363ad099867
+guid: 8bdeb55c1dd64fa4c878e276235347e1
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: leaves3
-    100004: leaves4
-    100006: leaves5
-    100008: leaves6
-    100010: plat3
-    100012: plat3_leaves
-    100014: tree
-    100016: tree1
-    100018: tree2
-    100020: tree3
-    100022: trees
-    100024: trees_plat3
-    100026: vines1
-    400000: //RootNode
-    400002: leaves3
-    400004: leaves4
-    400006: leaves5
-    400008: leaves6
-    400010: plat3
-    400012: plat3_leaves
-    400014: tree
-    400016: tree1
-    400018: tree2
-    400020: tree3
-    400022: trees
-    400024: trees_plat3
-    400026: vines1
-    2300000: leaves3
-    2300002: leaves4
-    2300004: leaves5
-    2300006: leaves6
-    2300008: plat3
-    2300010: tree
-    2300012: tree1
-    2300014: tree2
-    2300016: tree3
-    2300018: vines1
-    3300000: leaves3
-    3300002: leaves4
-    3300004: leaves5
-    3300006: leaves6
-    3300008: plat3
-    3300010: tree
-    3300012: tree1
-    3300014: tree2
-    3300016: tree3
-    3300018: vines1
-    4300000: plat3
-    4300002: tree
-    4300004: tree1
-    4300006: tree2
-    4300008: tree3
-    4300010: leaves3
-    4300012: leaves4
-    4300014: leaves5
-    4300016: leaves6
-    4300018: vines1
+    100000: Layer1
+    100002: Layer2
+    100004: Layer3
+    100006: Layer4
+    100008: Layer5
+    100010: Layer6
+    100012: //RootNode
+    400000: Layer1
+    400002: Layer2
+    400004: Layer3
+    400006: Layer4
+    400008: Layer5
+    400010: Layer6
+    400012: //RootNode
+    2300000: Layer1
+    2300002: Layer2
+    2300004: Layer3
+    2300006: Layer4
+    2300008: Layer5
+    2300010: Layer6
+    3300000: Layer1
+    3300002: Layer2
+    3300004: Layer3
+    3300006: Layer4
+    3300008: Layer5
+    3300010: Layer6
+    4300000: Layer1
+    4300002: Layer2
+    4300004: Layer3
+    4300006: Layer4
+    4300008: Layer5
+    4300010: Layer6
     9500000: //RootNode
   materials:
     importMaterials: 1

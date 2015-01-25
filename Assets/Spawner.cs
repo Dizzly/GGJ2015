@@ -132,6 +132,18 @@ public class Spawner : MonoBehaviour {
 		waveSpacing = waveBaseSpacing;
 		
 		spawnFrequency = spawnBaseFrequency;
+
+		
+		bossSpawnCount=bossBaseSpawnCount;
+		wavesCount=wavesBaseCount;
+
+		waveSpacing=waveBaseSpacing;
+
+		currentSpeed_=baseSpeed;
+		
+		float xEstent=xBaseEstentOffset;
+	
+
 		currentScore_ = 100;
 		gs = GameStatus.Normal;
 	}

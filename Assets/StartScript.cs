@@ -40,10 +40,12 @@ public class StartScript : MonoBehaviour
 		{
 				on = true;
 		returnToOrigin = true;
+
 		introTimer = introDuration = 5.0f;
 				//c = (Camera)GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ();
 				Spawner spawn;
 				spawn = GameObject.FindGameObjectWithTag ("Spawner").GetComponent<Spawner> ();
+		ScoreManager scorer = GameObject.FindGameObjectWithTag ("Spawner").GetComponent<ScoreManager> ();
 				spawnerFrequency = spawn.spawnBaseFrequency;
 				spawnerBaseChance = spawn.baseSpawnChance;
 				spawnerSpawnIncrement = spawn.spawnChanceIncrement;
@@ -56,7 +58,7 @@ public class StartScript : MonoBehaviour
 		
 				personalTextEnd = textEnd;
 				personalTextStart = textStart;
-		titleText.text = "GAME OVER";
+		titleText.text = "GAME OVER \n Score:" + scorer.GetScore();
 
 		}
 	

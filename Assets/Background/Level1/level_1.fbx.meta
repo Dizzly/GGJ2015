@@ -1,15 +1,40 @@
 fileFormatVersion: 2
-guid: 8d902db98a6b6a747af99be9865d33e2
+guid: 79cc988728da8fb458566911914e3e66
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Plat2
-    400000: //RootNode
-    400002: Plat2
-    2300000: Plat2
-    3300000: Plat2
-    4300000: Plat2
+    100000: Layer1
+    100002: Layer2
+    100004: Layer3
+    100006: Layer4
+    100008: Layer5
+    100010: Layer6
+    100012: //RootNode
+    400000: Layer1
+    400002: Layer2
+    400004: Layer3
+    400006: Layer4
+    400008: Layer5
+    400010: Layer6
+    400012: //RootNode
+    2300000: Layer1
+    2300002: Layer2
+    2300004: Layer3
+    2300006: Layer4
+    2300008: Layer5
+    2300010: Layer6
+    3300000: Layer1
+    3300002: Layer2
+    3300004: Layer3
+    3300006: Layer4
+    3300008: Layer5
+    3300010: Layer6
+    4300000: Layer1
+    4300002: Layer2
+    4300004: Layer3
+    4300006: Layer4
+    4300008: Layer5
+    4300010: Layer6
     9500000: //RootNode
   materials:
     importMaterials: 1

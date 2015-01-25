@@ -24,6 +24,10 @@ public class ScoreManager : MonoBehaviour {
 		bossScore = staticBossScore;
 	}
 
+	public int GetScore()
+	{
+		return currentScore;
+	}
 	public void AwardScore(int i)
 	{
 		currentScore += i;
