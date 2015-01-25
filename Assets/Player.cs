@@ -49,6 +49,12 @@ public class Player : MonoBehaviour
 				}
 		}
 
+	void PlayNormal()
+	{
+
+
+	}
+
 		void Start ()
 		{
 	
@@ -92,8 +98,6 @@ public class Player : MonoBehaviour
 				l.enabled = false;
 			}
 		}
-				
-
 
 				if (keysToHitQueue [readIndex] != null) {
 						int key = TranslateInput ();
