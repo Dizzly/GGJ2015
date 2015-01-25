@@ -23,6 +23,8 @@ public class KeyObject : MonoBehaviour {
 	int scoreValue;
 	ScoreManager scoreMan;
 
+	public bool isFarPlane = false;
+
 	public Color[] keyColors = new Color[4]{
 		Color.red,
 		Color.blue,

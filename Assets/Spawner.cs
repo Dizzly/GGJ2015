@@ -27,6 +27,10 @@ public class Spawner : MonoBehaviour {
 
 	//Tracking position on a sorted List
 	private List<Transform> trackedPosition = new List<Transform> ();
+
+	//Tricky to get the coulor from the ball on the tree
+	List<KeyObject> treeBallsList = new List<KeyObject>();
+
 	public float baseMinimumSpacing = 3.0f;
     private float minimumSpacing;
 
@@ -241,19 +245,26 @@ public class Spawner : MonoBehaviour {
 				text.transform.SetParent(canvas.transform,false);
 				
 				//Adding rigidbody force over y
-					// it is a not tree so we can actually do this operation
-					//leaves fall perpendicular to the field
-				if(index == 0)
-					{
-						Rigidbody2D rd = g.GetComponent<Rigidbody2D>();
-						rd.velocity = new Vector2(0, Random.Range(5, 10));
-					}
-				
-				
+				// it is a not tree so we can actually do this operation
+				//leaves fall perpendicular to the field
 				Mover m = g.GetComponent<Mover> ();
 				m.speed_ = currentSpeed_;
 				KeyObject k = g.GetComponent<KeyObject> ();
-				int key = Random.Range (0, 4);
+				int key = 0;
+				if(index == 0)
+				{
+					Rigidbody2D rd = g.GetComponent<Rigidbody2D>();
+					rd.velocity = new Vector2(0, Random.Range(5, 10));
+					key = Random.Range (0, 4);
+				}
+				else
+				{
+				//coming from a tree
+					//IMPORTANT 1 - 1 because the two lists are synchronzed
+					//apart from the initial position which is occupied by the spawner
+					key = treeBallsList[index-1].GetRequirement();
+				}				
+				
 				k.SetKey (key,false);
 				Debug.Log(key);
 				k.InitScore (currentScore_, scoreMan);
@@ -263,12 +274,15 @@ public class Spawner : MonoBehaviour {
 					                                 0);
 				
 				trackedPosition.Insert(insertIndex,k.transform);
-				return;
+					//trick to make spawning more from the the trees
+				//if(i != 0)
+					return;
 				}
 			}
 		}
 	}
 
+	//THESE ARE MEANT TO BE ONLY THE BALL ON THE SCREEEN
 	void SpawnInactiveKeyObj(Transform trans)
 	{
 		//Condition on general spawning with minium space distance
@@ -281,10 +295,13 @@ public class Spawner : MonoBehaviour {
 			Mover m = g.GetComponent<Mover> ();
 		m.speed_ = -1;
 			KeyObject k = g.GetComponent<KeyObject> ();
-			int key = Random.Range (0, 8);
+			int key = Random.Range (0, 4);
 			k.SetKey (key,false);
 			k.Disable ();
 			TextFollow t = g.GetComponent<TextFollow> ();
+
+		//Adding the ball to the screen
+		treeBallsList.Add (k);
 
 		t.gameObject.transform.SetParent (trans);
 		t.gameObject.GetComponent<Rigidbody2D> ().gravityScale = 0;

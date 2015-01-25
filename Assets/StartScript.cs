@@ -13,7 +13,7 @@ public class StartScript : MonoBehaviour
 		public Transform textEnd;
 		Transform personalTextStart;
 		Transform personalTextEnd;
-		Camera c;
+		//Camera c;
 		public float introDuration = 5.0f;
 		float introTimer = -1;
 		int spawnerBaseChance;
@@ -41,7 +41,7 @@ public class StartScript : MonoBehaviour
 				on = true;
 		returnToOrigin = true;
 		introTimer = introDuration = 5.0f;
-				c = (Camera)GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ();
+				//c = (Camera)GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ();
 				Spawner spawn;
 				spawn = GameObject.FindGameObjectWithTag ("Spawner").GetComponent<Spawner> ();
 				spawnerFrequency = spawn.spawnBaseFrequency;
