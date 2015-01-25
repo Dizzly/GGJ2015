@@ -8,6 +8,7 @@ public class Spawner : MonoBehaviour {
 	
 	private enum GameStatus
 	{
+		Idle,
 		Normal,
 		WaitingLastBalls,
 		DuDAnimation,
@@ -102,7 +103,7 @@ public class Spawner : MonoBehaviour {
 		currentSpeed_ = baseSpeed = sv.GlobalSpeed;
 
 		//Starting the game
-		gs = GameStatus.Normal;
+		gs = GameStatus.Idle;
 
 		//create a ball at every spawn location
 		//except for the spawners location which is i=0
@@ -449,6 +450,11 @@ public class Spawner : MonoBehaviour {
 		currentScore_ = currentScore_ * 6 / 4;
 	}
 
+	public void StartGame()
+	{
+		gs = GameStatus.Normal;
+	}
+
 	private void UpdateGameParameters()
 	{
 		GameObject camObj = GameObject.FindWithTag("MainCamera");
@@ -514,6 +520,9 @@ public class Spawner : MonoBehaviour {
 
       switch (gs)
       {
+		case GameStatus.Idle:
+
+			break;
          case GameStatus.Normal:
 
             if (spawnTimer > spawnFrequency)
