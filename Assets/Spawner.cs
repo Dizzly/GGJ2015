@@ -216,10 +216,11 @@ public class Spawner : MonoBehaviour {
 		for(int i=0;i<spawnPos.Count;++i)
 		{
 		Vector3 pos = this.transform.position;
+			int index = Random.Range(0,spawnPos.Count);
 
 		if(spawnPos.Count>0)
 		{
-			pos=spawnPos[Random.Range(0,spawnPos.Count)].position;
+				pos=spawnPos[index].position;
 		}			                 
 
 		//Condition on general spawning with minium space distance
@@ -240,8 +241,14 @@ public class Spawner : MonoBehaviour {
 				text.transform.SetParent(canvas.transform,false);
 				
 				//Adding rigidbody force over y
-				Rigidbody2D rd = g.GetComponent<Rigidbody2D>();
-				rd.velocity = new Vector2(0, Random.Range(5, 10));
+					// it is a not tree so we can actually do this operation
+					//leaves fall perpendicular to the field
+				if(index == 0)
+					{
+						Rigidbody2D rd = g.GetComponent<Rigidbody2D>();
+						rd.velocity = new Vector2(0, Random.Range(5, 10));
+					}
+				
 				
 				Mover m = g.GetComponent<Mover> ();
 				m.speed_ = currentSpeed_;
@@ -284,6 +291,7 @@ public class Spawner : MonoBehaviour {
 		t.gameObject.transform.localScale = trans.localScale;
 
 		k.Disable ();
+
 	}
 
 
@@ -381,7 +389,9 @@ public class Spawner : MonoBehaviour {
       //changing chance, minimum space, increasing velocity
 
       spawnChance = 100;
-		minimumSpacing = xEstent + xBaseEstentOffset;
+	  currentSpeed_ += 0.3f;
+	  
+	  minimumSpacing = xEstent + xBaseEstentOffset;
       spawnFrequency = 0.1f;
 
       bossSpawnCount= bossBaseSpawnCount;
@@ -400,7 +410,7 @@ public class Spawner : MonoBehaviour {
 	void UpdateScore()
 	{
 		GetComponent<ScoreManager> ().UpdateLastScore();
-		currentScore_ = currentScore_ * 5 / 3;
+		currentScore_ = currentScore_ * 6 / 4;
 	}
 
 	private void UpdateGameParameters()
@@ -410,15 +420,17 @@ public class Spawner : MonoBehaviour {
 
 		currentSpeed_ = baseSpeed = sv.GlobalSpeed += 0.1f;
 
-		spawnFrequency = spawnBaseFrequency -= 0.15f;
-		minimumSpacing = baseMinimumSpacing -= 0.2f;
+		spawnFrequency = spawnBaseFrequency -= 0.2f;
+		minimumSpacing = baseMinimumSpacing -= 0.3f;
 		xBaseEstentOffset -= 0.2f;
 		//currentSpeed_ = baseSpeed += 0.2f;
 		bossSpawnCount = bossBaseSpawnCount += 1;
 		wavesCount = wavesBaseCount += 1;
 
-		spawnChance = baseSpawnChance += 3;
+
+		spawnChance = baseSpawnChance += 5;
 		spawnChanceIncrement += 2;
+
 
 	}
 
@@ -490,9 +502,9 @@ public class Spawner : MonoBehaviour {
             break;
          case GameStatus.BossFighting:
 
-            if (spawnTimer > spawnFrequency)
-            {
-               spawnTimer = 0;
+            //if (spawnTimer > spawnFrequency)
+            //{
+             //  spawnTimer = 0;
                //If we finished the waves we change status
                if(wavesCount > 0)
                {
@@ -505,11 +517,12 @@ public class Spawner : MonoBehaviour {
 					EndBossFighting();
                   gs = GameStatus.EndBossFighting;
                }                               
-            }
-            else
-            {
-               spawnTimer += Time.deltaTime;
-            }
+            //}
+            //
+			//else
+            //{
+            //   spawnTimer += Time.deltaTime;
+            //}
 
             break;
          case GameStatus.EndBossFighting:
