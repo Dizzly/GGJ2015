@@ -53,8 +53,11 @@ public class Spawner : MonoBehaviour {
 	public int currentScore_=100;
 
     public float xEstent;
-	public float xBaseEstentOffset = 1.0f;
+	public float xEstentOffset = 1.0f;
 
+	//USed this variable as a multiplier as long as the pattern is repeated
+	private int iteration = 0;
+		
    //This parameter multiple seconds and tell us 
    //how long between two different spawn trials are passed
 
@@ -65,7 +68,8 @@ public class Spawner : MonoBehaviour {
 		
 	public int baseSpawnChance;
 
-	public int spawnChanceIncrement;
+	public int spawnBaseChanceIncrement;
+	private int spawnChanceIncrement;
 
 	int spawnChance;
 
@@ -81,6 +85,7 @@ public class Spawner : MonoBehaviour {
 
       minimumSpacing = baseMinimumSpacing;
       
+		spawnChanceIncrement = spawnBaseChanceIncrement;
 
       bossSpawnCount = bossBaseSpawnCount;
       wavesCount = wavesBaseCount;
@@ -141,7 +146,7 @@ public class Spawner : MonoBehaviour {
 
 		currentSpeed_=baseSpeed;
 		
-		float xEstent=xBaseEstentOffset;
+		//xEstent=xEstentOffset;
 	
 
 		currentScore_ = 100;
@@ -282,7 +287,7 @@ public class Spawner : MonoBehaviour {
 				k.InitScore (currentScore_, scoreMan);
 				TextFollow t = g.GetComponent<TextFollow> ();
 				t.Init (text, key);
-					t.transform.position=new Vector3(t.transform.position.x,t.transform.position.y,
+				t.transform.position=new Vector3(t.transform.position.x,t.transform.position.y,
 					                                 0);
 				
 				trackedPosition.Insert(insertIndex,k.transform);
@@ -369,7 +374,7 @@ public class Spawner : MonoBehaviour {
 		 bossSpawnCount = bossSpawnCount - 1;
 		 if(bossSpawnCount > 0)
          { 
-				minimumSpacing = xEstent + xBaseEstentOffset;
+				minimumSpacing = xEstent + xEstentOffset;
             
          }
 		else
@@ -420,7 +425,7 @@ public class Spawner : MonoBehaviour {
       spawnChance = 100;
 	  currentSpeed_ += 0.3f;
 	  
-	  minimumSpacing = xEstent + xBaseEstentOffset;
+	  minimumSpacing = xEstent + xEstentOffset;
       spawnFrequency = 0.1f;
 
       bossSpawnCount= bossBaseSpawnCount;
@@ -447,18 +452,20 @@ public class Spawner : MonoBehaviour {
 		GameObject camObj = GameObject.FindWithTag("MainCamera");
 		SpeedVar sv = camObj.GetComponent<SpeedVar> ();
 
-		currentSpeed_ = baseSpeed = sv.GlobalSpeed += 0.1f;
+		iteration++;
 
-		spawnFrequency = spawnBaseFrequency -= 0.2f;
-		minimumSpacing = baseMinimumSpacing -= 0.3f;
-		xBaseEstentOffset -= 0.2f;
+		currentSpeed_ = baseSpeed = sv.GlobalSpeed + iteration * 0.1f;
+
+		spawnFrequency = spawnBaseFrequency - iteration * 0.2f;
+		minimumSpacing = baseMinimumSpacing - iteration * 0.3f;
+		xEstentOffset -= 0.2f;
 		//currentSpeed_ = baseSpeed += 0.2f;
-		bossSpawnCount = bossBaseSpawnCount += 1;
-		wavesCount = wavesBaseCount += 1;
+		bossSpawnCount = bossBaseSpawnCount + iteration * 1;
+		wavesCount = wavesBaseCount + iteration * 1;
 
 
-		spawnChance = baseSpawnChance += 5;
-		spawnChanceIncrement += 2;
+		spawnChance = baseSpawnChance + iteration * 5;
+		spawnBaseChanceIncrement += 2;
 
 
 	}
@@ -485,7 +492,7 @@ public class Spawner : MonoBehaviour {
 			SpawnKeyObj ();
 			spawnChance=baseSpawnChance;
 				} else {
-			spawnChance+=spawnChanceIncrement;		
+			spawnChance+=spawnBaseChanceIncrement;		
 		}
 	}
 
@@ -542,7 +549,7 @@ public class Spawner : MonoBehaviour {
                else 
                {
                   //tricky to separate waves
-					minimumSpacing = xEstent + xBaseEstentOffset;
+					minimumSpacing = xEstent + xEstentOffset;
 					EndBossFighting();
                   gs = GameStatus.EndBossFighting;
                }                               
