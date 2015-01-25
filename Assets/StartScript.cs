@@ -43,6 +43,7 @@ public class StartScript : MonoBehaviour
 
 		introTimer = introDuration = 5.0f;
 				//c = (Camera)GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ();
+
 				Spawner spawn;
 				spawn = GameObject.FindGameObjectWithTag ("Spawner").GetComponent<Spawner> ();
 		ScoreManager scorer = GameObject.FindGameObjectWithTag ("Spawner").GetComponent<ScoreManager> ();
