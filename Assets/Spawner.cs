@@ -191,10 +191,11 @@ public class Spawner : MonoBehaviour {
 		for(int i=0;i<spawnPos.Count;++i)
 		{
 		Vector3 pos = this.transform.position;
+			int index = Random.Range(0,spawnPos.Count);
 
 		if(spawnPos.Count>0)
 		{
-			pos=spawnPos[Random.Range(0,spawnPos.Count)].position;
+				pos=spawnPos[index].position;
 		}			                 
 
 		//Condition on general spawning with minium space distance
@@ -215,8 +216,14 @@ public class Spawner : MonoBehaviour {
 				text.transform.SetParent(canvas.transform,false);
 				
 				//Adding rigidbody force over y
-				Rigidbody2D rd = g.GetComponent<Rigidbody2D>();
-				rd.velocity = new Vector2(0, Random.Range(5, 10));
+					// it is a not tree so we can actually do this operation
+					//leaves fall perpendicular to the field
+				if(index == 0)
+					{
+						Rigidbody2D rd = g.GetComponent<Rigidbody2D>();
+						rd.velocity = new Vector2(0, Random.Range(5, 10));
+					}
+				
 				
 				Mover m = g.GetComponent<Mover> ();
 				m.speed_ = currentSpeed_;
@@ -239,41 +246,44 @@ public class Spawner : MonoBehaviour {
 
 	void SpawnInactiveKeyObj()
 	{
-		Vector3 pos = this.transform.position;
-		if(spawnPos.Count>0)
+		for (int i=0; i<spawnPos.Count; ++i) 
 		{
-			pos=spawnPos[Random.Range(0,spawnPos.Count)].position;
-		}
+			Vector3 pos = this.transform.position;
+			if (spawnPos.Count > 0) 
+			{
+					pos = spawnPos [Random.Range (0, spawnPos.Count)].position;
+			}
 
-		//Condition on general spawning with minium space distance
-		int insertIndex = -1;
+			//Condition on general spawning with minium space distance
+			int insertIndex = -1;
 
-		if (isPositionAvailable (pos, ref insertIndex)) 
-		{
-			
-			GameObject g=(GameObject)GameObject.Instantiate (template,
-			                                                 pos,
-			                                                 Quaternion.identity);
-			GameObject text=(GameObject)GameObject.Instantiate (textTemplate);
-			
-			
-			GameObject canvas = GameObject.FindGameObjectWithTag ("Canvas");
-			
-			text.transform.SetParent(canvas.transform,false);
+			if (isPositionAvailable (pos, ref insertIndex)) 
+			{
 
-			Mover m = g.GetComponent<Mover> ();
-			m.speed_ = currentSpeed_;
-			KeyObject k = g.GetComponent<KeyObject> ();
-			int key = Random.Range (0, 8);
-			k.SetKey (key,false);
-			k.Disable ();
-			TextFollow t = g.GetComponent<TextFollow> ();
-			t.Init (text,(int) KeyObject.KEY_REQUIREMENT.KEY_NULL_MAX);
+				GameObject g = (GameObject)GameObject.Instantiate (template,
+                                         pos,
+                                         Quaternion.identity);
+				GameObject text = (GameObject)GameObject.Instantiate (textTemplate);
 
-				trackedPosition.Insert(insertIndex,k.transform);
 
-			k.Disable ();
+				GameObject canvas = GameObject.FindGameObjectWithTag ("Canvas");
 
+				text.transform.SetParent (canvas.transform, false);
+
+				Mover m = g.GetComponent<Mover> ();
+				m.speed_ = currentSpeed_;
+				KeyObject k = g.GetComponent<KeyObject> ();
+				int key = Random.Range (0, 8);
+				k.SetKey (key, false);
+				k.Disable ();
+				TextFollow t = g.GetComponent<TextFollow> ();
+				t.Init (text, (int)KeyObject.KEY_REQUIREMENT.KEY_NULL_MAX);
+
+				trackedPosition.Insert (insertIndex, k.transform);
+
+				k.Disable ();
+				return;
+			}
 		}
 	}
 
