@@ -111,7 +111,7 @@ public class Player : MonoBehaviour
 		{
 		if (Input.GetButtonDown ("Debug"))
 		   {
-			extraLives_=100000;
+			extraLives_=0;
 
 		}
 				if (on) {
