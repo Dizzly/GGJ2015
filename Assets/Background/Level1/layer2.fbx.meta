@@ -5,11 +5,16 @@ ModelImporter:
   fileIDToRecycleName:
     100000: //RootNode
     100002: Plat2
+    100004: plat2
     400000: //RootNode
     400002: Plat2
+    400004: plat2
     2300000: Plat2
+    2300002: plat2
     3300000: Plat2
+    3300002: plat2
     4300000: Plat2
+    4300002: plat2
     9500000: //RootNode
   materials:
     importMaterials: 1

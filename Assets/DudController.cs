@@ -53,7 +53,7 @@ public class DudController : MonoBehaviour
 						destination = (Random.insideUnitSphere * 0.4f) + this.transform.position;
 						destination.z = 0;
 						destination.y = this.transform.position.y;
-				} else if(this.transform.position.x<7) {
+				} else if(this.transform.position.x<7&&this.transform.position.x>0) {
 						this.transform.Translate ((destination - this.transform.position).normalized * -xSpeed * Time.deltaTime);
 				}
 		}

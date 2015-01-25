@@ -15,6 +15,7 @@ ModelImporter:
     100018: trees
     100020: trees_plat3
     100022: vines1
+    100024: PLat3
     400000: //RootNode
     400002: leaves3
     400004: leaves4
@@ -27,6 +28,7 @@ ModelImporter:
     400018: trees
     400020: trees_plat3
     400022: vines1
+    400024: PLat3
     2300000: leaves3
     2300002: leaves4
     2300004: leaves6
@@ -35,6 +37,7 @@ ModelImporter:
     2300010: tree1
     2300012: tree3
     2300014: vines1
+    2300016: PLat3
     3300000: leaves3
     3300002: leaves4
     3300004: leaves6
@@ -43,6 +46,7 @@ ModelImporter:
     3300010: tree1
     3300012: tree3
     3300014: vines1
+    3300016: PLat3
     4300000: plat3
     4300002: tree1
     4300004: tree3
@@ -51,6 +55,7 @@ ModelImporter:
     4300010: vines1
     4300012: tree
     4300014: leaves3
+    4300016: PLat3
     9500000: //RootNode
   materials:
     importMaterials: 1
