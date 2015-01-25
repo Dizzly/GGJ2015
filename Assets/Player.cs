@@ -37,18 +37,19 @@ public class Player : MonoBehaviour
 
 		public void LooseGame ()
 		{
-		if (extraLives_==0&&on) {
+		if (extraLives_ == 0 && on) {
 						print ("Dead");
-			readIndex=0;
-			writeIndex=0;
-			this.renderer.material.color=Color.black;
-			ParticleSystem s=GetComponentInChildren<ParticleSystem>();
-			s.Stop();
-			on=false;
-			//returning the game to its title screen
-			GameObject.FindGameObjectWithTag ("Finish").GetComponent<StartScript> ().TitleScreen ();
+						readIndex = 0;
+						writeIndex = 0;
+						this.renderer.material.color = Color.black;
+						ParticleSystem s = GetComponentInChildren<ParticleSystem> ();
+						s.Stop ();
+						on = false;
+						//returning the game to its title screen
+						GameObject.FindGameObjectWithTag ("Finish").GetComponent<StartScript> ().TitleScreen ();
+				} else {
+			extraLives_--;		
 		}
-
 		//DEBUG REMOVE ON RELEASE
 		IncrementRead ();
 		}
@@ -85,6 +86,7 @@ public class Player : MonoBehaviour
 		flashTimer = flashDurationInSec;
 		ParticleSystem s=GetComponentInChildren<ParticleSystem>();
 		s.startColor = c;
+		renderer.material.color = c;
 		
 	}
 
@@ -107,6 +109,11 @@ public class Player : MonoBehaviour
 		// Update is called once per frame
 		void Update ()
 		{
+		if (Input.GetButtonDown ("Debug"))
+		   {
+			extraLives_=100000;
+
+		}
 				if (on) {
 						//disable if for the light flash
 						if (flashTimer != 0) {
@@ -116,7 +123,8 @@ public class Player : MonoBehaviour
 										l.enabled = false;
 										ParticleSystem s = GetComponentInChildren<ParticleSystem> ();
 										s.startColor = Color.white;
-								}
+					renderer.material.color = Color.white;
+				}
 						}
 
 						if (keysToHitQueue [readIndex] != null) {
