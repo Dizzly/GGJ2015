@@ -368,7 +368,9 @@ public class Spawner : MonoBehaviour {
       //changing chance, minimum space, increasing velocity
 
       spawnChance = 100;
-		minimumSpacing = xEstent + xBaseEstentOffset;
+	  currentSpeed_ += 0.3f;
+	  
+	  minimumSpacing = xEstent + xBaseEstentOffset;
       spawnFrequency = 0.1f;
 
       bossSpawnCount= bossBaseSpawnCount;
@@ -387,7 +389,7 @@ public class Spawner : MonoBehaviour {
 	void UpdateScore()
 	{
 		GetComponent<ScoreManager> ().UpdateLastScore();
-		currentScore_ = currentScore_ * 5 / 3;
+		currentScore_ = currentScore_ * 6 / 4;
 	}
 
 	private void UpdateGameParameters()
@@ -397,14 +399,14 @@ public class Spawner : MonoBehaviour {
 
 		currentSpeed_ = baseSpeed = sv.GlobalSpeed += 0.25f;
 
-		spawnFrequency = spawnBaseFrequency -= 0.15f;
-		minimumSpacing = baseMinimumSpacing -= 0.2f;
+		spawnFrequency = spawnBaseFrequency -= 0.2f;
+		minimumSpacing = baseMinimumSpacing -= 0.3f;
 		xBaseEstentOffset -= 0.2f;
 		//currentSpeed_ = baseSpeed += 0.2f;
 		bossSpawnCount = bossBaseSpawnCount += 1;
 		wavesCount = wavesBaseCount += 1;
 
-		spawnChance = baseSpawnChance += 3;
+		spawnChance = baseSpawnChance += 5;
 		spawnChanceIncrment += 2;
 
 	}
@@ -470,9 +472,9 @@ public class Spawner : MonoBehaviour {
             break;
          case GameStatus.BossFighting:
 
-            if (spawnTimer > spawnFrequency)
-            {
-               spawnTimer = 0;
+            //if (spawnTimer > spawnFrequency)
+            //{
+             //  spawnTimer = 0;
                //If we finished the waves we change status
                if(wavesCount > 0)
                {
@@ -485,11 +487,12 @@ public class Spawner : MonoBehaviour {
 					EndBossFighting();
                   gs = GameStatus.EndBossFighting;
                }                               
-            }
-            else
-            {
-               spawnTimer += Time.deltaTime;
-            }
+            //}
+            //
+			//else
+            //{
+            //   spawnTimer += Time.deltaTime;
+            //}
 
             break;
          case GameStatus.EndBossFighting:
