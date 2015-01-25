@@ -188,6 +188,8 @@ public class Spawner : MonoBehaviour {
 
 	void SpawnKeyObj()
 	{
+		for(int i=0;i<spawnPos.Count;++i)
+		{
 		Vector3 pos = this.transform.position;
 
 		if(spawnPos.Count>0)
@@ -225,10 +227,12 @@ public class Spawner : MonoBehaviour {
 				k.InitScore (currentScore_, scoreMan);
 				TextFollow t = g.GetComponent<TextFollow> ();
 				t.Init (text, key);
-				
+					t.transform.position=new Vector3(t.transform.position.x,t.transform.position.y,
+					                                 0);
 				
 				trackedPosition.Insert(insertIndex,k.transform);
-				
+				return;
+				}
 			}
 		}
 	}
