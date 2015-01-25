@@ -6,6 +6,10 @@ public class DudController : MonoBehaviour
 
 		Animation anim;
 
+	public AudioSource normalMusic;
+	public AudioSource fastMusic;
+	public AudioSource slowMusic;
+
 		struct AnimObj
 		{
 				float speed;
@@ -39,7 +43,10 @@ public class DudController : MonoBehaviour
 				anim.Play ("Panting");
 		oldSpeed = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<SpeedVar> ().GlobalSpeed;
 		GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<SpeedVar> ().GlobalSpeed = 1.4f;
-		}
+		normalMusic.audio.Stop ();
+		slowMusic.Play ();
+	
+	}
 
 		public void StopAnimation ()
 		{
@@ -86,6 +93,8 @@ public class DudController : MonoBehaviour
 										//this.transform.Rotate (new Vector3(0,180,0));
 										destination = this.transform.position;
 										anim.Play ();
+					slowMusic.Stop();
+					fastMusic.Play();
 										GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner>().EndBossAnimation();
 					GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<SpeedVar> ().GlobalSpeed=oldSpeed+0.4f;
 										startRunning = true;
@@ -101,6 +110,8 @@ public class DudController : MonoBehaviour
 										isShocked = false;
 										startRunning = false;
 										isAnimating = false;
+					fastMusic.Stop();
+					normalMusic.Play();
 					GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner>();
 					//GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<SpeedVar> ().GlobalSpeed=oldSpeed;
 										timer = 0;
