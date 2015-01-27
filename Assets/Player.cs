@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 		// Use this for initialization
 
 
-		int extraLives_ = 0;//no extra lives by default
+	bool shouldDie=false;
 	
 		const int maxKeyObjects_ = 30;
 		public int writeIndex = 0;
@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
 		on = true;
 		writeIndex = 0;
 		readIndex = 0;
+		shouldDie = true;
 		}
 
 		public void AddKeyObject (KeyObject k)
@@ -37,7 +38,7 @@ public class Player : MonoBehaviour
 
 		public void LooseGame ()
 		{
-		if (extraLives_ == 0 && on) {
+		if (shouldDie) {
 						print ("Dead");
 						readIndex = 0;
 						writeIndex = 0;
@@ -45,13 +46,10 @@ public class Player : MonoBehaviour
 						ParticleSystem s = GetComponentInChildren<ParticleSystem> ();
 						s.Stop ();
 						on = false;
+						shouldDie = false;
 						//returning the game to its title screen
 						GameObject.FindGameObjectWithTag ("Finish").GetComponent<StartScript> ().TitleScreen ();
-				} else {
-			extraLives_--;		
-		}
-		//DEBUG REMOVE ON RELEASE
-		IncrementRead ();
+				}
 		}
 
 		void IncrementRead ()
@@ -108,12 +106,7 @@ public class Player : MonoBehaviour
 	
 		// Update is called once per frame
 		void Update ()
-		{
-		if (Input.GetButtonDown ("Debug"))
-		   {
-			extraLives_=0;
-
-		}
+	{
 				if (on) {
 						//disable if for the light flash
 						if (flashTimer != 0) {

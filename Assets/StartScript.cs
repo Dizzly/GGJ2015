@@ -16,9 +16,9 @@ public class StartScript : MonoBehaviour
 		//Camera c;
 		public float introDuration = 5.0f;
 		float introTimer = -1;
-		int spawnerBaseChance;
-		int spawnerSpawnIncrement;
-		float spawnerFrequency;
+		//int spawnerBaseChance;
+		//int spawnerSpawnIncrement;
+		//float spawnerFrequency;
 		bool on = false;
 		bool safeToStart=false;
 		bool returnToOrigin = true;
@@ -44,19 +44,17 @@ public class StartScript : MonoBehaviour
 		introTimer = introDuration = 5.0f;
 				//c = (Camera)GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<Camera> ();
 
-				Spawner spawn;
-				spawn = GameObject.FindGameObjectWithTag ("Spawner").GetComponent<Spawner> ();
+				//Spawner spawn;
+				//spawn = GameObject.FindGameObjectWithTag ("Spawner").GetComponent<Spawner> ();
 		ScoreManager scorer = GameObject.FindGameObjectWithTag ("Spawner").GetComponent<ScoreManager> ();
-				spawnerFrequency = spawn.spawnBaseFrequency;
-				spawnerBaseChance = spawn.baseSpawnChance;
-				spawnerSpawnIncrement = spawn.spawnChanceIncrement;
-		
-				spawn.spawnBaseFrequency = 100;
-				spawn.baseSpawnChance = 0;
-				spawn.spawnChanceIncrement = 0;
+				//spawnerFrequency = spawn.spawnBaseFrequency;
+				//spawnerBaseChance = spawn.baseSpawnChance;
+				//spawnerSpawnIncrement = spawn.spawnChanceIncrement;
+		Spawner spawn = GameObject.FindGameObjectWithTag("Spawner").GetComponent<Spawner> ();
+		spawn.Reset ();
 
 				safeToStart = false;
-		
+					
 				personalTextEnd = textEnd;
 				personalTextStart = textStart;
 		titleText.text = "GAME OVER \n Score:" + scorer.GetScore();
@@ -84,10 +82,11 @@ public class StartScript : MonoBehaviour
 								ScoreManager sc = go.GetComponent<ScoreManager> ();
 				Player p=GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 				
-								spawn.spawnBaseFrequency = spawnerFrequency;
-								spawn.baseSpawnChance = spawnerBaseChance;
-								spawn.spawnChanceIncrement = spawnerSpawnIncrement;
-								spawn.Reset ();
+								//spawn.spawnBaseFrequency = spawnerFrequency;
+								//spawn.baseSpawnChance = spawnerBaseChance;
+								//spawn.spawnChanceIncrement = spawnerSpawnIncrement;
+							
+			spawn.StartGame();
 								sc.Reset ();
 								p.Wakeup();
 

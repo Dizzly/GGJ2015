@@ -8,7 +8,7 @@ public class Spawner : MonoBehaviour {
 	
 	private enum GameStatus
 	{
-		Idle,
+		Idle=0,
 		Normal,
 		WaitingLastBalls,
 		DuDAnimation,
@@ -71,7 +71,7 @@ public class Spawner : MonoBehaviour {
 	public int baseSpawnChance;
 
 	public int spawnBaseChanceIncrement;
-	private int spawnChanceIncrement;
+	public  int spawnChanceIncrement;
 
 	public int spawnChance;
 
@@ -154,7 +154,7 @@ public class Spawner : MonoBehaviour {
 	
 
 		currentScore_ = 100;
-		gs = GameStatus.Normal;
+		gs = GameStatus.Idle;
 	}
 	
 	bool isPositionAvailable(Vector3 pos, ref int insertIndex)
@@ -241,7 +241,7 @@ public class Spawner : MonoBehaviour {
 		for(int i=0;i<spawnPos.Count;++i)
 		{
 		Vector3 pos = this.transform.position;
-			int index = Random.Range(0,spawnPos.Count);
+			int index = Random.Range(0,10);
 
 		if(spawnPos.Count>0)
 		{
